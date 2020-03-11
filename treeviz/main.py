@@ -29,7 +29,7 @@ def tree_to_dot(root, tree_type="tree", filename="tree.dot"):
                 AVAILABLE_TREES
             ))
 
-    dot.to_dot(g)
+    dot.to_dot(g, filename)
 
 
 
