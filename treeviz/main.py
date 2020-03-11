@@ -13,7 +13,7 @@ def tree_to_dot(root, tree_type="tree", filename="tree.dot"):
     Create a dot file from tree datastructure
     """
     if root is None:
-        raise ValueError("Tree is empty cant create picture!")
+        raise ValueError("Tree is empty, cant vizualize empty trees!")
 
     g = Graph(
         directed=True
