@@ -13,7 +13,7 @@ If you are using an older version of pip you can run into problems when installi
 
 # To-Do
 - [X] Test on WSL.
-- [ ] Test on Cygwin.
+- [X] Test on Cygwin - Can't install igraph. Not supported.
 - [ ] Test on MacOS.
 - [ ] Test on Linux.
 - [ ] Remove depency on igraph. https://eli.thegreenplace.net/2009/11/23/visualizing-binary-trees-with-graphviz
