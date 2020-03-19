@@ -40,6 +40,9 @@ def create_cmd(dotfile, pngfile, dir_path):
 
 
 def create_wsl_command(cmd, dir_path):
+    # kan använda powershell.exe start ... för att starta ett program
+    # powershell.exe start $(wslpath -w $(which dot.exe))
+    # wslpath har fler options...
     cmd.format(
         dot="dot.exe",
         dir=fix_c_in_windows_path(dir_path),
