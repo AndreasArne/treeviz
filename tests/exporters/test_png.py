@@ -2,12 +2,27 @@
 Tests Treeviz png exporter
 """
 import unittest
+import filecmp
+import shutil
 from unittest import mock
+from pathlib import Path
+from os import path
 #pylint: disable=no-name-in-module,import-error, protected-access, attribute-defined-outside-init
 from treeviz.exporters import png
 
 class TestPngExporter(unittest.TestCase):
     """Submodule for unittests, derives from unittest.TestCase"""
+
+
+    # def test_create_png(self):
+    #     """
+    #     For visual test of dot-to-png.
+    #     """
+    #     dir_path = path.dirname(path.realpath(__name__))
+    #     expected_png = "tests/resources/tree.dot"
+    #     expected_path = dir_path + "/" + expected_png
+    #
+    #     png.create_png(expected_png)
 
     @mock.patch("treeviz.exporters.png.platform")
     def test_create_cmd_wsl(self, platform_mock):
