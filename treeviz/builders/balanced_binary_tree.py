@@ -1,19 +1,36 @@
 """
-Builds trees with igraph.
-igraph - pip3 install python-igraph
-Uses invisible nodes to balances trees.
+Uses invisible nodes to balances trees in graph.
 Based on https://stackoverflow.com/a/48198645 to balance tree.
 """
 from treeviz.builders.tree import TreeBuilder
+from treeviz.builders.vertex import Vertex
+from treeviz.builders.edge import Edge
 
-class BbtBuilder(TreeBuilder):
+class BalancedBinaryTreeGraph():
     """
     Builder for Balanced Binary Trees with igraph
     """
     def __init__(self, node):
+        if node is None:
+            raise ValueError("Tree is empty, can't build Graph")
+
         # used to give unique id to invis nodes
         self.invis_counter = 0
-        super().__init__(node)
+        self.vertexes = {}
+        self.edges = []
+        self._add_node_to_graph(node)
+
+
+
+    def _add_vertex(self, name, **kwargs):
+        """
+        Take all arguments and add as options to vertex
+        """
+        if name in self.vertexes:
+            # breakpoint()
+            raise KeyError(f"Graph already contain vertex {name}.")
+            
+        self.vertexes[name] = Vertex(name, **kwargs)
 
 
 
@@ -24,7 +41,7 @@ class BbtBuilder(TreeBuilder):
         """
         key = str(node.key)
         # add node to graph
-        self.graph.add_vertex(name=key, label=key, style="filled")
+        self._add_vertex(name=key, label=key, style="filled")
 
         if node.has_parent():
             self._add_edge(key, node.parent.key)
@@ -49,26 +66,32 @@ class BbtBuilder(TreeBuilder):
     def _add_edge(self, key, other_key):
         """
         Try to add edge between two nodes.
-        If it can't add edge, because a node is missing, it will add the node
-        and and edge between them.
+        If it can't add edge, because a node is missing, it will add the missing node
+        and an edge between them.
         """
-        try:
-            self.graph.add_edge(key, str(other_key), style="filled")
-        except ValueError:
+        other_key = str(other_key)
+        if key not in self.vertexes:
+            raise ValueError(f"Missing the source key, {key}, from tree in graph. This shouldn't be possible!")
+        if other_key not in self.vertexes:
             print(
-                "Something is wrong. Can't add an edge between\
- {first} and {second}. Will add anyway to show structure.\
- {second} probably doesn't exist in tree but\
- {first} is referencing it.".format(
+"Something is wrong. Can't add an edge between\
+{first} and {second}. Will add anyway to show structure.\
+{second} probably doesn't exist in tree but\
+{first} is referencing it.".format(
                     first=key, second=other_key
                 )
             )
-            self.graph.add_vertex(
+            self._add_vertex(
                 name=str(other_key),
                 label=str(other_key),
                 style="filled",
             )
-            self.graph.add_edge(key, str(other_key), style="filled")
+
+        self.edges.append(Edge(
+            self.vertexes[key].id,
+            self.vertexes[str(other_key)].id,
+            style="filled",
+        ))
 
 
 
@@ -81,5 +104,11 @@ class BbtBuilder(TreeBuilder):
         """
         self.invis_counter += 1
         inv_key = "i" + str(self.invis_counter)
-        self.graph.add_vertex(inv_key, label=inv_key, style="invis")
-        self.graph.add_edge(key, inv_key, style="invis", weight=5)
+        self._add_vertex(inv_key, label=inv_key, style="invis")
+
+        self.edges.append(Edge(
+            self.vertexes[key].id,
+            self.vertexes[inv_key].id,
+            style="invis",
+            weight=5
+        ))

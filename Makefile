@@ -85,7 +85,7 @@ info:
 # target: validate                     - Validate code with pylint
 .PHONY: validate
 validate:
-	@pylint --rcfile=.pylintrc treeviz tests
+	@pylint --rcfile=.pylintrc treeviz
 
 
 
