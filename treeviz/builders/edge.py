@@ -33,6 +33,12 @@ class Edge():
 
 
 
+    def __contains__(self, other):
+        print(other)
+        return True if other == self.src or other == self.dest else False
+
+
+
 if __name__ ==  "__main__":
     l = [
         Edge("1", "2", label="ko"),
