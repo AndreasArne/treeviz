@@ -1,0 +1,20 @@
+{
+    "BalancedBinaryTreeGraph": {
+        "graph": {
+            "nodesep": 0.25,
+            "ranksep": 0.75,
+            "splines": "line"
+        },
+        "node": {
+            "style": "filled",
+            "fillcolor": "lightblue",
+            "shape": "circle",
+            "fixedsize": "true",
+            "width": 0.5
+        },
+        "edge": {
+            "arrowsize": 0.8,
+            "color": "black"
+        }
+    }
+}
