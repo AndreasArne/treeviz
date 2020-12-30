@@ -24,10 +24,10 @@ def get_nodes_neighbors(node):
     by creating subgenerators
     """
     yield [
-        str(node.key),
-        str(node.parent.key) if node.parent else None,
-        str(node.left.key) if node.left else None,
-        str(node.right.key) if node.right else None,
+        node.key,
+        node.parent.key if node.parent else None,
+        node.left.key if node.left else None,
+        node.right.key if node.right else None,
     ]
     if node.has_left_child():
         yield from get_nodes_neighbors(node.left)
