@@ -10,6 +10,8 @@ class BalancedBinaryTreeGraph():
     """
     Builder for Balanced Binary Trees with igraph
     """
+    _graph_type = "digraph"
+
     def __init__(self, node):
         if node is None:
             raise ValueError("Tree is empty, can't build Graph")
@@ -22,12 +24,17 @@ class BalancedBinaryTreeGraph():
 
 
 
+    @property
+    def graph_type(self):
+        return self._graph_type
+
+
+
     def _add_vertex(self, name, **kwargs):
         """
         Take all arguments and add as options to vertex
         """
         if name in self.vertexes:
-            # breakpoint()
             raise KeyError(f"Graph already contain vertex {name}.")
             
         self.vertexes[name] = Vertex(name, **kwargs)
@@ -37,18 +44,18 @@ class BalancedBinaryTreeGraph():
     def _add_node_to_graph(self, node):
         """
         Recutsivly add tree node to the graph.
-        Adds invisible nodes to balance the tree.
+        Adds invisible nodes to balance vizualization of the tree.
         """
         key = str(node.key)
         # add node to graph
         self._add_vertex(name=key, label=key, style="filled")
 
         if node.has_parent():
-            self._add_edge(key, node.parent.key)
+            self._add_edge(key, node.parent.key, "parent")
 
         if node.has_left_child():
             self._add_node_to_graph(node.left)
-            self._add_edge(key, node.left.key)
+            self._add_edge(key, node.left.key, "left")
         else:
             self._add_invis_node(key)
 
@@ -57,40 +64,47 @@ class BalancedBinaryTreeGraph():
 
         if node.has_right_child():
             self._add_node_to_graph(node.right)
-            self._add_edge(key, node.right.key)
+            self._add_edge(key, node.right.key, "right")
         else:
             self._add_invis_node(key)
 
 
 
-    def _add_edge(self, key, other_key):
+    def _add_edge(self, src, dest, direction):
         """
         Try to add edge between two nodes.
         If it can't add edge, because a node is missing, it will add the missing node
         and an edge between them.
         """
-        other_key = str(other_key)
-        if key not in self.vertexes:
-            raise ValueError(f"Missing the source key, {key}, from tree in graph. This shouldn't be possible!")
-        if other_key not in self.vertexes:
+        dest = str(dest)
+        if src not in self.vertexes:
+            raise ValueError(f"Missing the source key, {src}, from tree in graph. This shouldn't be possible!")
+        if dest not in self.vertexes:
             print(
-"Something is wrong. Can't add an edge between\
+"Something is wrong. Can't add an edge between nodes\
 {first} and {second}. Will add anyway to show structure.\
 {second} probably doesn't exist in tree but\
-{first} is referencing it.".format(
-                    first=key, second=other_key
+{first} is referencing it. The error node will have color red".format(
+                    first=src, second=dest
                 )
             )
             self._add_vertex(
-                name=str(other_key),
-                label=str(other_key),
-                style="filled",
+                name=str(dest),
+                label=str(dest),
+                color="red",
             )
 
+            self.edges.append(Edge(
+                self.vertexes[src].id,
+                self.vertexes[str(dest)].id,
+                label=direction,
+                color="red",
+            ))
+            return
+
         self.edges.append(Edge(
-            self.vertexes[key].id,
-            self.vertexes[str(other_key)].id,
-            style="filled",
+            self.vertexes[src].id,
+            self.vertexes[str(dest)].id,
         ))
 
 
