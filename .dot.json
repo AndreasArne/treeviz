@@ -2,7 +2,7 @@
     "BalancedBinaryTreeGraph": {
         "graph": {
             "nodesep": 0.25,
-            "ranksep": 0.75,
+            "ranksep": 0.3,
             "splines": "line"
         },
         "node": {

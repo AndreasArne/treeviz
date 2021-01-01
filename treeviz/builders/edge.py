@@ -27,7 +27,7 @@ class Edge():
 
 
     def __eq__(self, other):
-        return other == (self.src, self.dest):
+        return other == (self.src, self.dest)
 
 
 
