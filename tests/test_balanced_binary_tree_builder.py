@@ -26,19 +26,19 @@ class TestBuilders(unittest.TestCase):
 
 
 
-    # def test_bbt_to_png(self):
-    #     """
-    #     Method for creating a picture of tree,
-    #     Nothing is tested. 
-    #     """
-    #     nr_tree_nodes = 11
-    #     self._setUp(nr_tree_nodes)
-    #     # Adds a ghost node
-    #     self.bst.root.left.parent = Node(99,99)
-    # 
-    #     bbt = BbtBuilder(self.bst.root)
-    #     dot.to_dot(bbt)
-    #     png.create_png()
+    def test_bbt_to_png(self):
+        """
+        Method for creating a picture of tree,
+        Nothing is tested. 
+        """
+        nr_tree_nodes = 11
+        self._setUp(nr_tree_nodes)
+        # Adds a ghost node
+        self.bst.root.left.parent = Node(99,99)
+    
+        bbt = BbtBuilder(self.bst.root)
+        dot.to_dot(bbt)
+        png.create_png()
 
 
 
@@ -163,7 +163,7 @@ class TestBuilders(unittest.TestCase):
         
         bbt = BbtBuilder(root)
         with self.assertRaises(KeyError):
-            bbt._add_vertex("1")
+            bbt._add_vertex(1)
 
 
 
@@ -192,11 +192,11 @@ class TestBuilders(unittest.TestCase):
             src_mock.id = src_id
             dest_mock = mock.MagicMock()
             dest_mock.id = dest_id
-            bbt.vertexes["1"] = src_mock
-            bbt.vertexes["2"] = dest_mock
+            bbt.vertexes[1] = src_mock
+            bbt.vertexes[2] = dest_mock
 
             with mock.patch('treeviz.builders.balanced_binary_tree.Edge') as edgeMock:
-                bbt._add_edge("1", 2, "parent")
+                bbt._add_edge(1, 2, "parent")
 
                 edgeMock.assert_called_once_with(src_id, dest_id)
 
@@ -214,22 +214,22 @@ class TestBuilders(unittest.TestCase):
         dest_id = 1
         def side_effect(self_, name, label, color):
             self.assertEqual(color, "red")
-            self.assertEqual(name, "2")
-            self.assertEqual(label, "2")
+            self.assertEqual(name, 2)
+            self.assertEqual(label, 2)
 
             dest_mock = mock.MagicMock()
             dest_mock.id = dest_id
-            self_.vertexes["2"] = dest_mock
+            self_.vertexes[2] = dest_mock
 
         with mock.patch.object(BbtBuilder, "_add_node_to_graph", lambda x, y: None): # Match number of args for init and return None
             bbt = BbtBuilder("")
             src_mock = mock.MagicMock()
             src_mock.id = src_id
-            bbt.vertexes["1"] = src_mock
+            bbt.vertexes[1] = src_mock
             
             with mock.patch.object(BbtBuilder, '_add_vertex', autospec=True, side_effect=side_effect):
                 with mock.patch('treeviz.builders.balanced_binary_tree.Edge') as edgeMock:
-                    bbt._add_edge("1", 2, "parent")
+                    bbt._add_edge(1, 2, "parent")
 
                     edgeMock.assert_called_once_with(src_id, dest_id, label="parent", color="red")
 

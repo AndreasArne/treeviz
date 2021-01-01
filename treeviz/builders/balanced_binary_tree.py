@@ -46,7 +46,8 @@ class BalancedBinaryTreeGraph():
         Recutsivly add tree node to the graph.
         Adds invisible nodes to balance vizualization of the tree.
         """
-        key = str(node.key)
+        key = node.key
+        # key = str(node.key)
         # add node to graph
         self._add_vertex(name=key, label=key, style="filled")
 
@@ -76,7 +77,7 @@ class BalancedBinaryTreeGraph():
         If it can't add edge, because a node is missing, it will add the missing node
         and an edge between them.
         """
-        dest = str(dest)
+        dest = dest
         if src not in self.vertexes:
             raise ValueError(f"Missing the source key, {src}, from tree in graph. This shouldn't be possible!")
         if dest not in self.vertexes:
@@ -89,14 +90,14 @@ class BalancedBinaryTreeGraph():
                 )
             )
             self._add_vertex(
-                name=str(dest),
-                label=str(dest),
+                name=dest,
+                label=dest,
                 color="red",
             )
 
             self.edges.append(Edge(
                 self.vertexes[src].id,
-                self.vertexes[str(dest)].id,
+                self.vertexes[dest].id,
                 label=direction,
                 color="red",
             ))
@@ -104,7 +105,7 @@ class BalancedBinaryTreeGraph():
 
         self.edges.append(Edge(
             self.vertexes[src].id,
-            self.vertexes[str(dest)].id,
+            self.vertexes[dest].id,
         ))
 
 

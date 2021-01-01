@@ -5,14 +5,12 @@ class Vertex():
     """
     Vertex class
     """
-    _id_counter = 0
 
     def __init__(self, name, **kwargs):
         self.name = name
         self.options = kwargs
         self.options["name"] = name
-        self._id = Vertex._id_counter
-        Vertex._id_counter += 1
+        self._id = id(name)
 
 
 
@@ -39,7 +37,7 @@ class Vertex():
 
 
     def __eq__(self, name):
-        return str(name) == self.name
+        return name == self.name
 
 
 
