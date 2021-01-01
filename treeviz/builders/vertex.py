@@ -39,9 +39,7 @@ class Vertex():
 
 
     def __eq__(self, name):
-        if str(name) == self.name:
-            return True
-        return False
+        return str(name) == self.name:
 
 
 
