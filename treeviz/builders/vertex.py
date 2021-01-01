@@ -9,7 +9,6 @@ class Vertex():
     def __init__(self, name, **kwargs):
         self.name = name
         self.options = kwargs
-        self.options["name"] = name
         self._id = id(name)
 
 
@@ -21,7 +20,7 @@ class Vertex():
 
 
     def __repr__(self):
-        repr = "{} [\n{}\n];".format(
+        repr = "{} [\n  {}\n];".format(
             self._id,
             "\n  ".join(
                 [f"{key}={value}" for key, value in self.options.items()]
