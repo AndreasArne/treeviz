@@ -16,6 +16,7 @@ Not supported! Can't install igraph on cygwin, dependency hell. Always something
 
 
 # To-Do
+- [ ] Fix main.tree_to_dot(). It does not work.
 - [ ] Test on MacOS.
 - [ ] Test on Linux.
 - [X] Add red color to edges who couldn't be added and the Node it adds.
