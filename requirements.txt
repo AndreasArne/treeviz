@@ -1,3 +1,2 @@
-python-igraph>=0.8
 wsl-path-converter>=0.3
 pylint>=2.4

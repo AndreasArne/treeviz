@@ -24,12 +24,43 @@ class TestPngExporter(unittest.TestCase):
     #
     #     png.create_png(expected_png)
 
+
+    def test_convert_cygwin_path_to_windows(self):
+        """
+        Asser that cygrive path are converted correctly
+        """
+        dir_path = "/cygdrive/c/Users/Zeldah/git/treeviz"
+        path = png.convert_cygwin_path_to_windows(dir_path)
+        self.assertEqual(path, "C:/Users/Zeldah/git/treeviz")
+
+
+
     @mock.patch("treeviz.exporters.png.platform")
-    def test_create_cmd_wsl(self, platform_mock):
+    def test_create_cmd_cygwin(self, platform_mock):
+        """
+        test the create_command function with wsl platform
+        """
+        platform_mock.platform.return_value = "cygwin_nt-10.0-18363-3.1.7-340.x86_64-x86_64-64bit-windowspe"
+        dotfile = "tree.dot"
+        pngfile = "tree.png"
+        dir_path = "/c/Users/Zeldah/git/treeviz"
+
+        cmd = png.create_cmd(dotfile, pngfile, dir_path)
+        self.assertEqual(
+            cmd,
+            "dot -Tpng C:/Users/Zeldah/git/treeviz/tree.dot -o C:/Users/Zeldah/git/treeviz/tree.png"
+        )
+
+
+
+    @mock.patch("treeviz.exporters.png.wpc")
+    @mock.patch("treeviz.exporters.png.platform")
+    def test_create_cmd_wsl(self, platform_mock, wpc_mock):
         """
         test the create_command function with wsl platform
         """
         platform_mock.platform.return_value = "Linux-4.4.0-17763-Microsoft-x86_64-with-Ubuntu-18.04-bionic"
+        wpc_mock.convert_m.return_value = "C:/Users/Zeldah/git/treeviz"
         dotfile = "tree.dot"
         pngfile = "tree.png"
         dir_path = "/c/Users/Zeldah/git/treeviz"

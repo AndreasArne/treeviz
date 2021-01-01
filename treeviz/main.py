@@ -2,11 +2,10 @@
 Entrypoint for module
 Visualize tree datastructures.
 """
-from igraph import Graph
 from treeviz.exporters import dot, png
-from treeviz.builders import balanced_binary_tree as bbt, tree
+from treeviz.builders import balanced_binary_tree as bbt# , tree
 
-AVAILABLE_TREES = "binary tree (bt), tree"
+AVAILABLE_TREES = "balanced binary tree (bbt), tree"
 
 def tree_to_dot(root, tree_type="tree", filename="tree.dot"):
     """
@@ -15,14 +14,11 @@ def tree_to_dot(root, tree_type="tree", filename="tree.dot"):
     if root is None:
         raise ValueError("Tree is empty, cant vizualize empty trees!")
 
-    g = Graph(
-        directed=True
-    )
 
-    if tree_type == "bt":
+    if tree_type == "bbt":
         bbt.add_node_to_graph(root, g)
     elif tree_type == "tree":
-        tree.add_node_to_graph(root, g)
+        pass
     else:
         raise ValueError("We don't yet support that tree type. Choose from {}."\
             .format(

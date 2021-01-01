@@ -2,7 +2,6 @@
 Uses invisible nodes to balances trees in graph.
 Based on https://stackoverflow.com/a/48198645 to balance tree.
 """
-from treeviz.builders.tree import TreeBuilder
 from treeviz.builders.vertex import Vertex
 from treeviz.builders.edge import Edge
 
