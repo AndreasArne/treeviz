@@ -18,7 +18,7 @@ Not supported! Can't install igraph on cygwin, dependency hell. Always something
 # To-Do
 - [ ] Test on MacOS.
 - [ ] Test on Linux.
-- [ ] Add red color to edges who couldn't be added and the Node it adds.
+- [X] Add red color to edges who couldn't be added and the Node it adds.
 - [X] Remove depency on igraph. https://eli.thegreenplace.net/2009/11/23/visualizing-binary-trees-with-graphviz
 - [X] Test on WSL.
 - [X] Test on Cygwin - Can't install igraph. Not supported.
