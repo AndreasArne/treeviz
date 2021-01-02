@@ -130,6 +130,20 @@ install:
 
 
 
+# target: install-test                 - Install Python packages specified in requirement/test.txt
+.PHONY: install-test
+install-test:
+	${pip} install -r requirements/test.txt
+
+
+
+# target: install-pip                 - Install Python packages specified in requirement/pip.txt
+.PHONY: install-pip
+install-pip:
+	${pip} install -r requirements/pip.txt
+
+
+
 # target: setup-venv                   - Install venv and update to pip to latest. Run before make install.
 .PHONY: setup-venv
 setup-venv:
