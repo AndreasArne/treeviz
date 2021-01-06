@@ -78,7 +78,22 @@ help:
 info:
 	@${py} --version
 	@${py} -m pip --version
-#@virtualenv --version
+
+
+
+# target: build                         - Build pip package.
+.PHONY: build
+build:
+	rm -rf treeviz.egg-info  build dist
+	@${py} setup.py bdist_wheel
+
+
+
+# target: install-local-build           - Install dist package locally.
+.PHONY: install-local-build
+install-local-build:
+	@${pip} uninstall treeviz
+	@${pip} install dist/*.whl
 
 
 
