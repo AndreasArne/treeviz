@@ -3,7 +3,7 @@ Entrypoint for module
 Visualize tree datastructures.
 """
 from treeviz.exporters import dot, png
-from treeviz.builders import balanced_binary_tree as bbt# , tree
+from treeviz.builders.balanced_binary_tree import BalancedBinaryTreeGraph as bbt# , tree
 
 AVAILABLE_TREES = "balanced binary tree (bbt)"
 
