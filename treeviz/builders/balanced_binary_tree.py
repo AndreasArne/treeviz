@@ -51,7 +51,7 @@ class BalancedBinaryTreeGraph():
         key = node.key
         # key = str(node.key)
         # add node to graph
-        self._add_vertex(name=key, label=key, style="filled")
+        self._add_vertex(name=key, label=key)
 
         if node.has_parent():
             self._add_edge(key, node.parent.key, "parent")
