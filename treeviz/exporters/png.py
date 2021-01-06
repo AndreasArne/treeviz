@@ -54,7 +54,7 @@ def convert_cygwin_path_to_windows(dir_path):
     """
     match = re.match('(/(cygdrive/)?)(.*)', dir_path)
     if not match:
-        return path.replace('/', '\\')
+        return dir_path.replace('/', '\\')
     dirs = match.group(3).split('/')
     dirs[0] = f'{dirs[0].upper()}:'
     return '/'.join(dirs)
@@ -67,5 +67,5 @@ def create_wsl_command(dir_path):
     and return powershell command for graphviz/dot.
     """
     dot = "powershell.exe dot.exe"
-    dir = wpc.convert_m(dir_path)
-    return dot, dir
+    dir_path = wpc.convert_m(dir_path)
+    return dot, dir_path

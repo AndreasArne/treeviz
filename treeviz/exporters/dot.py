@@ -47,7 +47,7 @@ def build_string(graph):
     edges = "\n".join([repr(edge) for edge in graph.edges])
 
     dot_string = "{graph_type} {{\n{config}\n{nodes}\n{edges}\n}}".format(
-        graph_type=graph._graph_type,
+        graph_type=graph.graph_type,
         config=graph_settings,
         nodes=nodes,
         edges=edges,

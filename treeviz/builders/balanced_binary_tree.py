@@ -25,6 +25,9 @@ class BalancedBinaryTreeGraph():
 
     @property
     def graph_type(self):
+        """
+        return private variable
+        """
         return self._graph_type
 
 
@@ -76,15 +79,14 @@ class BalancedBinaryTreeGraph():
         If it can't add edge, because a node is missing, it will add the missing node
         and an edge between them.
         """
-        dest = dest
         if src not in self.vertexes:
             raise ValueError(f"Missing the source key, {src}, from tree in graph. This shouldn't be possible!")
         if dest not in self.vertexes:
             print(
-"Something is wrong. Can't add an edge between nodes\
-{first} and {second}. Will add anyway to show structure.\
-{second} probably doesn't exist in tree but\
-{first} is referencing it. The error node will have color red".format(
+"Something is wrong. Can't add an edge between nodes \
+'{first}' and '{second}'. Will add anyway to show structure. \
+'{second}' probably doesn't exist in tree but '\
+{first}' is referencing it. The error node will have color red".format(
                     first=src, second=dest
                 )
             )

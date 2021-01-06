@@ -17,12 +17,12 @@ class Edge():
             [f"  {key}={value}" for key, value in self.options.items()]
         )
 
-        repr = "{src} -> {dest} [\n{options}\n];".format(
+        repr_ = "{src} -> {dest} [\n{options}\n];".format(
             src=self.src,
             dest=self.dest,
             options=options,
         )
-        return repr
+        return repr_
 
 
 
@@ -32,8 +32,7 @@ class Edge():
 
 
     def __contains__(self, other):
-        print(other)
-        return True if other == self.src or other == self.dest else False
+        return other in (self.src, self.dest)
 
 
 

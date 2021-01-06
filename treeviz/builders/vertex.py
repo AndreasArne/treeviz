@@ -15,18 +15,21 @@ class Vertex():
 
     @property
     def id(self):
+        """
+        return private attrbute
+        """
         return self._id
 
 
 
     def __repr__(self):
-        repr = "{} [\n  {}\n];".format(
+        repr_ = "{} [\n  {}\n];".format(
             self._id,
             "\n  ".join(
                 [f"{key}={value}" for key, value in self.options.items()]
             )
         )
-        return repr
+        return repr_
 
 
 
