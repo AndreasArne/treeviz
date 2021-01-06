@@ -5,9 +5,9 @@ Visualize tree datastructures.
 from treeviz.exporters import dot, png
 from treeviz.builders import balanced_binary_tree as bbt# , tree
 
-AVAILABLE_TREES = "balanced binary tree (bbt), tree"
+AVAILABLE_TREES = "balanced binary tree (bbt)"
 
-def tree_to_dot(root, tree_type="tree", filename="tree.dot"):
+def tree_to_dot(root, tree_type="bbt", filename="tree.dot"):
     """
     Create a dot file from tree datastructure
     """
@@ -16,9 +16,7 @@ def tree_to_dot(root, tree_type="tree", filename="tree.dot"):
 
 
     if tree_type == "bbt":
-        bbt.add_node_to_graph(root, g)
-    elif tree_type == "tree":
-        pass
+        g = bbt(root)
     else:
         raise ValueError("We don't yet support that tree type. Choose from {}."\
             .format(
