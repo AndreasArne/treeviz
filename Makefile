@@ -83,8 +83,7 @@ info:
 
 # target: build                         - Build pip package.
 .PHONY: build
-build:
-	rm -rf treeviz.egg-info  build dist
+build: clean-build
 	@${py} setup.py bdist_wheel
 
 
@@ -130,9 +129,18 @@ clean-py:
 
 
 
+# target: clean-build                    - Remove all build files
+.PHONY: clean-build
+clean-build: clean-py
+	rm -rf treeviz.egg-info
+	rm -rf dist
+	rm -rf build
+
+
+
 # target: clean                        - Remove all generated files
 .PHONY: clean
-clean: clean-py
+clean: clean-py clean-build
 	find . -name '*~' -exec rm -f {} +
 	find . -name '*.log*' -exec rm -fr {} +
 
