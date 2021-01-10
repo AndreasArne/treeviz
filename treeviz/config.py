@@ -48,8 +48,8 @@ def get_config(graph_type):
             file_config
         )
         return merged_config
-    else:
-        return DEFAULT_DOT_CONFIGS[graph_type]
+
+    return DEFAULT_DOT_CONFIGS[graph_type]
 
 
 
@@ -62,7 +62,7 @@ def read_config(graph_type):
         with open(CONFIG_FILENAME) as fd:
             config_json = json.load(fd)
         return config_json.get(graph_type, None)
-
+    return None
 
 
 def merge_configs(d1, d2):
