@@ -2,6 +2,7 @@
 Exports graph to dot file.
 """
 import json
+from treeviz import config
 
 config_filename = ".dot.json"
 
@@ -23,18 +24,17 @@ def write_to_file(content, filename):
 
 
 
-def create_config(graph_type, filename=config_filename):
+def create_config_str(graph_type, filename=config_filename):
     """
     Create config string for dot file graph.
     """
-    with open(filename) as fd:
-        config_json = json.load(fd)
+    dot_config = config.get_config(graph_type)
 
-    config = ""
-    for graph_part, values in config_json[graph_type].items():
+    config_str = ""
+    for graph_part, values in dot_config.items():
         options = [f"  {key}={value}" for key, value in values.items()]
-        config += graph_part + " [\n" + ",\n".join(options) + "\n];\n"
-    return config
+        config_str += graph_part + " [\n" + ",\n".join(options) + "\n];\n"
+    return config_str
 
 
 
@@ -42,7 +42,7 @@ def build_string(graph):
     """
     Create string with dot code from graph
     """
-    graph_settings = create_config(graph.__class__.__name__)
+    graph_settings = create_config_str(graph.__class__.__name__)
     nodes = "\n".join([repr(vertex) for vertex in graph.vertexes.values()])
     edges = "\n".join([repr(edge) for edge in graph.edges])
 
