@@ -58,7 +58,8 @@ class TestConfig(unittest.TestCase):
         """
         mock_path.is_file.return_value = True
         mock_json.load.return_value = {"graph": 1}
-        self.assertEqual(config.read_config("graph"), 1)
+        with mock.patch("builtins.open") as _:
+            self.assertEqual(config.read_config("graph"), 1)
 
 
 
@@ -75,9 +76,10 @@ class TestConfig(unittest.TestCase):
     def test_read_config_with_missing_graph_type(self, mock_path, mock_json):
         mock_path.is_file.return_value = True
         mock_json.load.return_value = {}
-        self.assertIsNone(
-            config.read_config("missing"),
-        )
+        with mock.patch("builtins.open") as _:
+            self.assertIsNone(
+                config.read_config("missing"),
+            )
 
 
 
