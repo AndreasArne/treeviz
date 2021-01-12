@@ -43,7 +43,7 @@ class Vertex():
 
 
 
-if __name__ ==  "__main__":
+if __name__ == "__main__":
     l = [
         Vertex("1", label="ko"),
         Vertex("2", label="haj", style="fixed"),

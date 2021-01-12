@@ -82,14 +82,12 @@ class BalancedBinaryTreeGraph():
         if src not in self.vertexes:
             raise ValueError(f"Missing the source key, {src}, from tree in graph. This shouldn't be possible!")
         if dest not in self.vertexes:
-            print(
-"Something is wrong. Can't add an edge between nodes \
-'{first}' and '{second}'. Will add anyway to show structure. \
-'{second}' probably doesn't exist in tree but '\
-{first}' is referencing it. The error node will have color red".format(
-                    first=src, second=dest
-                )
-            )
+            print((
+                f"Something is wrong. Can't add an edge between nodes"
+                f"'{src}' and '{dest}'. Will add anyway to show structure."
+                f"'{dest}' probably doesn't exist in tree but '"
+                f"{src}' is referencing it. The error node will have color red"
+            ))
             self._add_vertex(
                 name=dest,
                 label=dest,

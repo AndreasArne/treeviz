@@ -36,7 +36,7 @@ class Edge():
 
 
 
-if __name__ ==  "__main__":
+if __name__ == "__main__":
     l = [
         Edge("1", "2", label="ko"),
         Edge("2", "1", label="haj", style="fixed"),
