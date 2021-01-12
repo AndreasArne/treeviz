@@ -81,6 +81,13 @@ info:
 
 
 
+# target: tox                         - Run tox on project.
+.PHONY: tox
+tox:
+	@${py} -m tox
+
+
+
 # target: build                         - Build pip package.
 .PHONY: build
 build: clean-build

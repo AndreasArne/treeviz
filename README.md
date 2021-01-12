@@ -40,7 +40,7 @@ Example for changing color on arrows and nodes for the BalancedBinaryTreeGraph.
 - [ ] Add support for linked lists.
 - [ ] Add package to pip site so can pip install.
 - [ ] Fix a properly readme.
-- [ ] Tox.
+- [X] Tox.
 - [X] To not have .dot.json be mandatory.
 - [X] Turn it into pip project.
 - [X] Fix main.tree_to_dot(). It does not work.
