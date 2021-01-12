@@ -3,10 +3,10 @@ Tests Treeviz builders
 """
 import unittest
 from unittest import mock
-import tree_utils as utils
+from fixtures import tree_utils as utils
 #pylint: disable=no-name-in-module,import-error, protected-access, attribute-defined-outside-init
-from bst import BinarySearchTree as Bst
-from bst import Node
+from fixtures.bst import BinarySearchTree as Bst
+from fixtures.bst import Node
 from treeviz.builders.balanced_binary_tree import BalancedBinaryTreeGraph as BbtBuilder
 from treeviz.exporters import png, dot
 
@@ -26,19 +26,19 @@ class TestBuilders(unittest.TestCase):
 
 
 
-    def test_bbt_to_png(self):
-        """
-        Method for creating a picture of tree,
-        Nothing is tested. 
-        """
-        nr_tree_nodes = 11
-        self._setUp(nr_tree_nodes)
-        # Adds a ghost node
-        self.bst.root.left.parent = Node(99,99)
-    
-        bbt = BbtBuilder(self.bst.root)
-        dot.to_dot(bbt)
-        png.create_png()
+    # def test_bbt_to_png(self):
+    #     """
+    #     Method for creating a picture of tree,
+    #     Nothing is tested. 
+    #     """
+    #     nr_tree_nodes = 11
+    #     self._setUp(nr_tree_nodes)
+    #     # Adds a ghost node
+    #     self.bst.root.left.parent = Node(99,99)
+    # 
+    #     bbt = BbtBuilder(self.bst.root)
+    #     dot.to_dot(bbt)
+    #     png.create_png()
 
 
 
