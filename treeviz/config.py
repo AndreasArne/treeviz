@@ -67,8 +67,8 @@ def read_config(graph_type):
 
 def merge_configs(d1, d2):
     '''
-    Update two dicts of dicts recursively, 
-    if either mapping has leaves that are non-dicts, 
+    Update two dicts of dicts recursively,
+    if either mapping has leaves that are non-dicts,
     the second's leaf overwrites the first's.
     https://stackoverflow.com/a/24088493
     '''

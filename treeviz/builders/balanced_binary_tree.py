@@ -38,7 +38,7 @@ class BalancedBinaryTreeGraph():
         """
         if name in self.vertexes:
             raise KeyError(f"Graph already contain vertex {name}.")
-            
+
         self.vertexes[name] = Vertex(name, **kwargs)
 
 

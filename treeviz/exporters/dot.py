@@ -1,10 +1,7 @@
 """
 Exports graph to dot file.
 """
-import json
 from treeviz import config
-
-config_filename = ".dot.json"
 
 def to_dot(graph, filename="tree.dot"):
     """
@@ -24,7 +21,7 @@ def write_to_file(content, filename):
 
 
 
-def create_config_str(graph_type, filename=config_filename):
+def create_config_str(graph_type):
     """
     Create config string for dot file graph.
     """
