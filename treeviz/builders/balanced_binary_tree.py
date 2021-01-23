@@ -2,44 +2,18 @@
 Uses invisible nodes to balances trees in graph.
 Based on https://stackoverflow.com/a/48198645 to balance tree.
 """
-from treeviz.builders.vertex import Vertex
 from treeviz.builders.edge import Edge
+from treeviz.builders.base_graph import Graph
 
-class BalancedBinaryTreeGraph():
+class BalancedBinaryTreeGraph(Graph):
     """
     Builder for Balanced Binary Trees with igraph
     """
-    _graph_type = "digraph"
 
     def __init__(self, node):
-        if node is None:
-            raise ValueError("Tree is empty, can't build Graph")
-
         # used to give unique id to invis nodes
         self.invis_counter = 0
-        self.vertexes = {}
-        self.edges = []
-        self._add_node_to_graph(node)
-
-
-
-    @property
-    def graph_type(self):
-        """
-        return private variable
-        """
-        return self._graph_type
-
-
-
-    def _add_vertex(self, name, **kwargs):
-        """
-        Take all arguments and add as options to vertex
-        """
-        if name in self.vertexes:
-            raise KeyError(f"Graph already contain vertex {name}.")
-
-        self.vertexes[name] = Vertex(name, **kwargs)
+        super().__init__(node)
 
 
 
@@ -70,42 +44,6 @@ class BalancedBinaryTreeGraph():
             self._add_edge(key, node.right.key, "right")
         else:
             self._add_invis_node(key)
-
-
-
-    def _add_edge(self, src, dest, direction):
-        """
-        Try to add edge between two nodes.
-        If it can't add edge, because a node is missing, it will add the missing node
-        and an edge between them.
-        """
-        if src not in self.vertexes:
-            raise ValueError(f"Missing the source key, {src}, from tree in graph. This shouldn't be possible!")
-        if dest not in self.vertexes:
-            print((
-                f"Something is wrong. Can't add an edge between nodes"
-                f"'{src}' and '{dest}'. Will add anyway to show structure."
-                f"'{dest}' probably doesn't exist in tree but '"
-                f"{src}' is referencing it. The error node will have color red"
-            ))
-            self._add_vertex(
-                name=dest,
-                label=dest,
-                color="red",
-            )
-
-            self.edges.append(Edge(
-                self.vertexes[src].id,
-                self.vertexes[dest].id,
-                label=direction,
-                color="red",
-            ))
-            return
-
-        self.edges.append(Edge(
-            self.vertexes[src].id,
-            self.vertexes[dest].id,
-        ))
 
 
 
