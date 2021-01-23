@@ -3,9 +3,10 @@ Entrypoint for module
 Visualize tree datastructures.
 """
 from treeviz.exporters import dot, png
-from treeviz.builders.balanced_binary_tree import BalancedBinaryTreeGraph as bbt# , tree
+from treeviz.builders.balanced_binary_tree import BalancedBinaryTreeGraph as bbt
+from treeviz.builders.linked_list import LinkedListGraph as ll
 
-AVAILABLE_TREES = "balanced binary tree (bbt)"
+AVAILABLE_TREES = "balanced binary tree (bbt), linked list (ll)"
 
 def tree_to_dot(root, tree_type="bbt", filename="tree.dot"):
     """
@@ -17,8 +18,10 @@ def tree_to_dot(root, tree_type="bbt", filename="tree.dot"):
 
     if tree_type == "bbt":
         g = bbt(root)
+    elif tree_type == "ll":
+        g = ll(root)
     else:
-        raise ValueError("We don't yet support that tree type. Choose from {}."\
+        raise ValueError("We don't yet support that datastructre. Choose from {}."\
             .format(
                 AVAILABLE_TREES
             ))
@@ -27,11 +30,11 @@ def tree_to_dot(root, tree_type="bbt", filename="tree.dot"):
 
 
 
-def tree_to_png(root, dotfile="tree.dot", pngfile="tree.png"):
+def tree_to_png(root, graph, dotfile="tree.dot", pngfile="tree.png"):
     """
     Creates dot-file and png from tree structure
     """
-    tree_to_dot(root, dotfile)
+    tree_to_dot(root, graph, dotfile)
     png.create_png(dotfile, pngfile)
 
 

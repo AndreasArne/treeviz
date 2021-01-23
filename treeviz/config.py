@@ -12,6 +12,22 @@ from collections.abc import MutableMapping
 
 
 DEFAULT_DOT_CONFIGS = {
+    "LinkedListGraph": {
+        "graph": {
+            "rankdir": "LR"
+        },
+        "node": {
+            "style": "filled",
+            "fillcolor": "lightblue",
+            "shape": "circle",
+            "fixedsize": "true",
+            "width": 1
+        },
+        "edge": {
+            "arrowsize": 1,
+            "color": "black"
+        }
+    },
     "BalancedBinaryTreeGraph": {
         "graph": {
             "nodesep": 0.25,
