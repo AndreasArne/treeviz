@@ -115,6 +115,7 @@ validate:
 test-unit: clean
 	@$(ECHO) "$(ACTION)---> Running all tests in tests/" "$(NO_COLOR)"
 	@${py} \
+		-m coverage run --rcfile=.coveragerc \
 		-m unittest discover tests
 	$(MAKE) clean-py
 
@@ -123,6 +124,9 @@ test-unit: clean
 # target: test                         - Run tests and display code coverage
 .PHONY: test
 test: validate test-unit
+	${py} -m coverage report  --rcfile=.coveragerc
+	$(MAKE) clean-cov
+
 
 
 
@@ -133,6 +137,14 @@ clean-py:
 	find . -name '*.pyo' -exec rm -f {} +
 	find . -name '__pycache__' -exec rm -fr {} +
 	find . -name '.pytest_cache' -exec rm -fr {} +
+
+
+
+## target: clean-cov                    - Remove generated coverage files
+.PHONY: clean-cov
+clean-cov:
+	rm -f .coverage
+	rm -rf tests/coverage_html
 
 
 
@@ -147,7 +159,7 @@ clean-build: clean-py
 
 # target: clean                        - Remove all generated files
 .PHONY: clean
-clean: clean-py clean-build
+clean: clean-py clean-build clean-cov
 	find . -name '*~' -exec rm -f {} +
 	find . -name '*.log*' -exec rm -fr {} +
 

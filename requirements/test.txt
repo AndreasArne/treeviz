@@ -1,3 +1,4 @@
 -r prod.txt
 pylint>=2.4
 tox~=3.20
+coverage~=5.3

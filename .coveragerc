@@ -1,0 +1,21 @@
+# .coveragerc to control coverage.py
+[run]
+branch = True
+source = treeviz/
+omit =
+   *__init__.py
+
+[report]
+show_missing = True
+
+# Regexes for lines to exclude from consideration
+exclude_lines =
+    # Don't report non-runnable code
+    if 0:
+    if __name__ == .__main__.:
+    pass
+    pragma: no cover
+# use "pragma: no cover" as comment to ignore code
+
+[html]
+directory = test/coverage_html
