@@ -18,6 +18,53 @@ class TestBuilders(unittest.TestCase):
     #     dot.to_dot(ll)
     #     png.create_png()
 
+    def test_add_node_to_graph_tree_nodes(self):
+        """
+        Tests entering while loop more than once
+        """
+        with mock.patch.object(LlBuilder, '_add_vertex') as addVertexMock:
+            with mock.patch.object(LlBuilder, '_add_edge') as addEdgeMock:
+                self.llb = LlBuilder(Node("1",Node(2, Node("te st"))))
+
+                vertex_calls = [
+                    mock.call(name=0, label='"i=0\nv=1"'),
+                    mock.call(name=1, label='"i=1\nv=2"'),
+                    mock.call(name=2, label='"i=2\nv=te st"'),
+                ]
+                addVertexMock.has_calls(vertex_calls)
+                edge_calls = [
+                    mock.call(0, 1),
+                    mock.call(1, 2),
+                ]
+                addEdgeMock.has_calls(edge_calls)
+
+
+
+    def test_add_node_to_graph_two_nodes(self):
+        """
+        Tests entering while loop once
+        """
+        with mock.patch.object(LlBuilder, '_add_vertex') as addVertexMock:
+            with mock.patch.object(LlBuilder, '_add_edge') as addEdgeMock:
+                self.llb = LlBuilder(Node("1",Node(2)))
+
+                vertex_calls = [
+                    mock.call(name=0, label='"i=0\nv=1"'),
+                    mock.call(name=1, label='"i=1\nv=2"'),
+                ]
+                addVertexMock.has_calls(vertex_calls)
+                addEdgeMock.assert_called_once_with(0, 1)
+
+
+
+    def test_add_node_to_graph_one_node(self):
+        """
+        Test not entering while loop
+        """
+        with mock.patch.object(LlBuilder, '_add_vertex') as addMock:
+            self.llb = LlBuilder(Node(1))
+            addMock.assert_called_once_with(name=0, label="i=0\nv=1")
+
 
 
     def test_create_linked_list_builder_with_none(self):
@@ -31,7 +78,6 @@ class TestBuilders(unittest.TestCase):
 
     def test_graph_type(self):
         self.assertEqual(LlBuilder.graph_type(), "digraph")
-
 
 
 
