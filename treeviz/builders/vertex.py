@@ -26,7 +26,7 @@ class Vertex():
         repr_ = "{} [\n  {}\n];".format(
             self._id,
             "\n  ".join(
-                [f"{key}={value}" for key, value in self.options.items()]
+                [f'{key}="{value}"'for key, value in self.options.items()]
             )
         )
         return repr_

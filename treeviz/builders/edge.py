@@ -14,7 +14,7 @@ class Edge():
 
     def __repr__(self):
         options = "\n".join(
-            [f"  {key}={value}" for key, value in self.options.items()]
+            [f'  {key}="{value}"' for key, value in self.options.items()]
         )
 
         repr_ = "{src} -> {dest} [\n{options}\n];".format(
