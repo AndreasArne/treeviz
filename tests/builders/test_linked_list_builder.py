@@ -27,16 +27,19 @@ class TestBuilders(unittest.TestCase):
                 self.llb = LlBuilder(Node("1",Node(2, Node("te st"))))
 
                 vertex_calls = [
-                    mock.call(name=0, label='"i=0\nv=1"'),
-                    mock.call(name=1, label='"i=1\nv=2"'),
-                    mock.call(name=2, label='"i=2\nv=te st"'),
+                    mock.call(name=0, label='i=0\nv=1'),
+                    mock.call(name=1, label='i=1\nv=2'),
+                    mock.call(name=2, label='i=2\nv=te st'),
                 ]
-                addVertexMock.has_calls(vertex_calls)
+                addVertexMock.assert_has_calls(vertex_calls)
+                self.assertEqual(addVertexMock.call_count, 3)
+                
                 edge_calls = [
                     mock.call(0, 1),
                     mock.call(1, 2),
                 ]
-                addEdgeMock.has_calls(edge_calls)
+                addEdgeMock.assert_has_calls(edge_calls)
+                self.assertEqual(addEdgeMock.call_count, 2)
 
 
 
@@ -49,10 +52,11 @@ class TestBuilders(unittest.TestCase):
                 self.llb = LlBuilder(Node("1",Node(2)))
 
                 vertex_calls = [
-                    mock.call(name=0, label='"i=0\nv=1"'),
-                    mock.call(name=1, label='"i=1\nv=2"'),
+                    mock.call(name=0, label='i=0\nv=1'),
+                    mock.call(name=1, label='i=1\nv=2'),
                 ]
-                addVertexMock.has_calls(vertex_calls)
+                addVertexMock.assert_has_calls(vertex_calls)
+                self.assertEqual(addVertexMock.call_count, 2)
                 addEdgeMock.assert_called_once_with(0, 1)
 
 
