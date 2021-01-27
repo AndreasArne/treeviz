@@ -29,6 +29,153 @@ class TestBuilders(unittest.TestCase):
 
 
 
+    @mock.patch.object(BbtBuilder, '_add_vertex')
+    @mock.patch.object(BbtBuilder, '_add_edge')
+    @mock.patch.object(BbtBuilder, '_add_invis_node')
+    def test_add_node_to_graph_one_node_has_both(self, invisMock, edgeMock, vertexMock):
+        """
+        Tests node having both children
+        """
+        root = Node(1, "None")
+        n3 = Node(3.0, 0.0)
+        n4 = Node("4. 4", "he j")
+        root.left = n3
+        n3.parent = root
+        root.right = n4
+        n4.parent = root
+        bbt = BbtBuilder(root)
+
+        vertex_calls = [
+            mock.call(name=1, label=1),
+            mock.call(name=3.0, label=3.0),
+            mock.call(name="4. 4", label="4. 4"),
+        ]
+        vertexMock.assert_has_calls(vertex_calls)
+        self.assertEqual(vertexMock.call_count, 3)
+
+        invis_calls = [
+            mock.call(3.0),
+            mock.call(3.0),
+            mock.call(3.0),
+            mock.call(1),
+            mock.call("4. 4"),
+            mock.call("4. 4"),
+            mock.call("4. 4"),
+        ]
+        invisMock.assert_has_calls(invis_calls)
+        self.assertEqual(invisMock.call_count, 7)
+
+        edge_calls = [
+            mock.call(3.0, 1, "parent"),
+            mock.call(1, 3.0, "left"),
+            mock.call("4. 4", 1, "parent"),
+            mock.call(1, "4. 4", "right"),
+        ]
+        edgeMock.assert_has_calls(edge_calls)
+        self.assertEqual(edgeMock.call_count, 4)
+
+
+
+    @mock.patch.object(BbtBuilder, '_add_vertex')
+    @mock.patch.object(BbtBuilder, '_add_edge')
+    @mock.patch.object(BbtBuilder, '_add_invis_node')
+    def test_add_node_to_graph_one_node_has_right(self, invisMock, edgeMock, vertexMock):
+        """
+        Tests having right child only
+        """
+        root = Node(1, "None")
+        n4 = Node("4. 4", "he j")
+        root.right = n4
+        n4.parent = root
+        bbt = BbtBuilder(root)
+
+        vertex_calls = [
+            mock.call(name=1, label=1),
+            mock.call(name="4. 4", label="4. 4"),
+        ]
+        vertexMock.assert_has_calls(vertex_calls)
+        self.assertEqual(vertexMock.call_count, 2)
+
+        invis_calls = [
+            mock.call(1),
+            mock.call(1),
+            mock.call("4. 4"),
+            mock.call("4. 4"),
+            mock.call("4. 4"),
+        ]
+        invisMock.assert_has_calls(invis_calls)
+        self.assertEqual(invisMock.call_count, 5)
+
+        edge_calls = [
+            mock.call("4. 4", 1, "parent"),
+            mock.call(1, "4. 4", "right"),
+        ]
+        edgeMock.assert_has_calls(edge_calls)
+        self.assertEqual(edgeMock.call_count, 2)
+
+
+
+    @mock.patch.object(BbtBuilder, '_add_vertex')
+    @mock.patch.object(BbtBuilder, '_add_edge')
+    @mock.patch.object(BbtBuilder, '_add_invis_node')
+    def test_add_node_to_graph_one_node_has_left(self, invisMock, edgeMock, vertexMock):
+        """
+        Tests having left child only
+        """
+        root = Node(1, "None")
+        n2 = Node("2", None)
+        root.left = n2
+        n2.parent = root
+        bbt = BbtBuilder(root)
+
+        vertex_calls = [
+            mock.call(name=1, label=1),
+            mock.call(name="2", label="2"),
+        ]
+        vertexMock.assert_has_calls(vertex_calls)
+        self.assertEqual(vertexMock.call_count, 2)
+
+        invis_calls = [
+            mock.call("2"),
+            mock.call("2"),
+            mock.call("2"),
+            mock.call(1),
+            mock.call(1),
+        ]
+        invisMock.assert_has_calls(invis_calls)
+        self.assertEqual(invisMock.call_count, 5)
+
+        edge_calls = [
+            mock.call("2", 1, "parent"),
+            mock.call(1, "2", "left"),
+        ]
+        edgeMock.assert_has_calls(edge_calls)
+        self.assertEqual(edgeMock.call_count, 2)
+
+
+
+    @mock.patch.object(BbtBuilder, '_add_vertex')
+    @mock.patch.object(BbtBuilder, '_add_edge')
+    @mock.patch.object(BbtBuilder, '_add_invis_node')
+    def test_add_node_to_graph_one_node(self, invisMock, edgeMock, vertexMock):
+        """
+        Tests having no children
+        """
+        root = Node(1, "None")
+        bbt = BbtBuilder(root)
+
+        vertexMock.assert_called_once_with(name=1, label=1)
+        invis_calls = [
+            mock.call(1),
+            mock.call(1),
+            mock.call(1),
+        ]
+        invisMock.assert_has_calls(invis_calls)
+        self.assertEqual(invisMock.call_count, 3)
+        edgeMock.assert_not_called()
+
+
+
     def test_graph_type(self):
         self.assertEqual(BbtBuilder.graph_type(), "digraph")
 
