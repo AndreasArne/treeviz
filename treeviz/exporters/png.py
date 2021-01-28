@@ -7,28 +7,32 @@ import re
 import platform
 import wsl_path_converter as wpc
 
+POWERSHELL_PREFIX = "powershell.exe"
+DOT_EXE = "dot.exe"
+DOT = "dot"
+CMD_STR = "{dot} -Tpng {dotfile} -o {pngfile}"
+
 def create_png(dotfile="tree.dot", pngfile="tree.png"):
     """
     Convert dot file to png using Graphviz
     """
-    dir_path = os.path.dirname(os.path.realpath(__name__))
-    cmd = create_cmd(dotfile, pngfile, dir_path)
+    dotfile = os.path.abspath(dotfile)
+    pngfile = os.path.abspath(pngfile)
+    cmd = create_cmd(dotfile, pngfile)
     os.system(cmd)
 
 
 
-def create_cmd(dotfile, pngfile, dir_path):
+def create_cmd(dotfile, pngfile):
     """
     Create terminal command for creating png of dot file.
     """
-    cmd_str = "{dot} -Tpng {dir}/{dotfile} -o {dir}/{pngfile}"
-    dot = "dot"
+    dot = DOT
 
     info = platform.platform().lower()
-    if "microsoft" in info and "linux" in info:
-        dot, dir_path = create_wsl_command(dir_path)
-    elif "cygwin" in info:
-        dir_path = convert_cygwin_path_to_windows(dir_path)
+    if "cygwin" in info:
+        dotfile = convert_cygwin_path_to_windows(dotfile)
+        pngfile = convert_cygwin_path_to_windows(pngfile)
     elif "darwin" in info or "linux" in info:
         pass
     else:
@@ -37,9 +41,8 @@ def create_cmd(dotfile, pngfile, dir_path):
             "You have to run graphviz manually to turn dot file to png."
         )
 
-    cmd = cmd_str.format(
+    cmd = CMD_STR.format(
         dot=dot,
-        dir=dir_path,
         dotfile=dotfile,
         pngfile=pngfile,
     )
@@ -59,13 +62,3 @@ def convert_cygwin_path_to_windows(dir_path):
     dirs[0] = f'{dirs[0].upper()}:'
     return '/'.join(dirs)
 
-
-
-def create_wsl_command(dir_path):
-    """
-    Use wsl_path_converter to convert wsl format path to windows
-    and return powershell command for graphviz/dot.
-    """
-    dot = "powershell.exe dot.exe"
-    dir_path = wpc.convert_m(dir_path)
-    return dot, dir_path

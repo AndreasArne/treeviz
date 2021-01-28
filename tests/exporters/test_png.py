@@ -13,18 +13,6 @@ from treeviz.exporters import png
 class TestPngExporter(unittest.TestCase):
     """Submodule for unittests, derives from unittest.TestCase"""
 
-
-    # def test_create_png(self):
-    #     """
-    #     For visual test of dot-to-png.
-    #     """
-    #     dir_path = path.dirname(path.realpath(__name__))
-    #     expected_png = "tests/resources/tree.dot"
-    #     expected_path = dir_path + "/" + expected_png
-    #
-    #     png.create_png(expected_png)
-
-
     def test_convert_cygwin_path_to_windows(self):
         """
         Asser that cygrive path are converted correctly
@@ -43,9 +31,9 @@ class TestPngExporter(unittest.TestCase):
         platform_mock.platform.return_value = "cygwin_nt-10.0-18363-3.1.7-340.x86_64-x86_64-64bit-windowspe"
         dotfile = "tree.dot"
         pngfile = "tree.png"
-        dir_path = "/c/Users/Zeldah/git/treeviz"
+        dir_path = "/c/Users/Zeldah/git/treeviz/"
 
-        cmd = png.create_cmd(dotfile, pngfile, dir_path)
+        cmd = png.create_cmd(dir_path+dotfile, dir_path+pngfile)
         self.assertEqual(
             cmd,
             "dot -Tpng C:/Users/Zeldah/git/treeviz/tree.dot -o C:/Users/Zeldah/git/treeviz/tree.png"
@@ -63,12 +51,12 @@ class TestPngExporter(unittest.TestCase):
         wpc_mock.convert_m.return_value = "C:/Users/Zeldah/git/treeviz"
         dotfile = "tree.dot"
         pngfile = "tree.png"
-        dir_path = "/c/Users/Zeldah/git/treeviz"
+        dir_path = "/c/Users/Zeldah/git/treeviz/"
 
-        cmd = png.create_cmd(dotfile, pngfile, dir_path)
+        cmd = png.create_cmd(dir_path+dotfile, dir_path+pngfile)
         self.assertEqual(
             cmd,
-            "powershell.exe dot.exe -Tpng C:/Users/Zeldah/git/treeviz/tree.dot -o C:/Users/Zeldah/git/treeviz/tree.png"
+            "dot -Tpng /c/Users/Zeldah/git/treeviz/tree.dot -o /c/Users/Zeldah/git/treeviz/tree.png"
         )
 
 
@@ -81,9 +69,9 @@ class TestPngExporter(unittest.TestCase):
         platform_mock.platform.return_value = "Darwin-18.7.0-x86_64-i386-64bit"
         dotfile = "tree.dot"
         pngfile = "tree.png"
-        dir_path = "/home/zeldah/git/treeviz"
+        dir_path = "/home/zeldah/git/treeviz/"
 
-        cmd = png.create_cmd(dotfile, pngfile, dir_path)
+        cmd = png.create_cmd(dir_path+dotfile, dir_path+pngfile)
         self.assertEqual(cmd, "dot -Tpng /home/zeldah/git/treeviz/tree.dot -o /home/zeldah/git/treeviz/tree.png")
 
 
@@ -96,44 +84,10 @@ class TestPngExporter(unittest.TestCase):
         platform_mock.platform.return_value = "Linux-4.19.84-standard-x86_64-with-debian-10.0"
         dotfile = "tree.dot"
         pngfile = "tree.png"
-        dir_path = "/home/zeldah/git/treeviz"
+        dir_path = "/home/zeldah/git/treeviz/"
 
-        cmd = png.create_cmd(dotfile, pngfile, dir_path)
+        cmd = png.create_cmd(dir_path+dotfile, dir_path+pngfile)
         self.assertEqual(cmd, "dot -Tpng /home/zeldah/git/treeviz/tree.dot -o /home/zeldah/git/treeviz/tree.png")
-
-
-
-    @mock.patch("treeviz.exporters.png.wpc")
-    def test_create_wsl_command_c_path(self, wpc_m):
-        """
-        test the create_wsl_command function with /c/ path for dir
-        """
-        expected_path = "C:/Users/Zeldah/git/treeviz"
-        wpc_m.convert_m.return_value = expected_path
-        dot_cmd = "powershell.exe dot.exe"
-
-        windows_path_c = "/c/Users/Zeldah/git/treeviz"
-        dot_and_dir = (dot_cmd, expected_path)
-        self.assertEqual(dot_and_dir, png.create_wsl_command(windows_path_c))
-        wpc_m.convert_m.assert_called_once_with(windows_path_c)
-
-
-
-    @mock.patch("treeviz.exporters.png.wpc")
-    def test_create_wsl_command_mnt_path(self, wpc_m):
-        """
-        test the create_wsl_command function with /mnt/ path for dir
-        """
-        expected_path = "C:/Users/Zeldah/git/treeviz"
-        wpc_m.convert_m.return_value = expected_path
-        dot_cmd = "powershell.exe dot.exe"
-
-        windows_path = "/mnt/c/Users/Zeldah/git/treeviz"
-        dot_and_dir = (dot_cmd, expected_path)
-        self.assertEqual(dot_and_dir, png.create_wsl_command(windows_path))
-        wpc_m.convert_m.assert_called_once_with(windows_path)
-
-
 
 if __name__ == '__main__':
     unittest.main(verbosity=3)
