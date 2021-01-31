@@ -116,14 +116,25 @@ test-unit: clean
 	@$(ECHO) "$(ACTION)---> Running all tests in tests/" "$(NO_COLOR)"
 	@${py} \
 		-m coverage run --rcfile=.coveragerc \
-		-m unittest discover tests
+		-m unittest discover tests.unit
+	$(MAKE) clean-py
+
+
+
+# target: test-integration             - Run tests in tests/integration with coverage.py
+.PHONY: test-integration
+test-integration: clean
+	@$(ECHO) "$(ACTION)---> Running all tests in tests/" "$(NO_COLOR)"
+	@${py} \
+		-m coverage run --rcfile=.coveragerc \
+		-m unittest discover tests.integration
 	$(MAKE) clean-py
 
 
 
 # target: test                         - Run tests and display code coverage
 .PHONY: test
-test: validate test-unit
+test: validate test-unit test-integration
 	${py} -m coverage report  --rcfile=.coveragerc
 	$(MAKE) clean-cov
 

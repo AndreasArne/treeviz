@@ -3,9 +3,9 @@ Tests Treeviz builders
 """
 import unittest
 from unittest import mock
-from fixtures import tree_utils as utils
+from tests.fixtures import tree_utils as utils
 #pylint: disable=no-name-in-module,import-error, protected-access, attribute-defined-outside-init
-from fixtures.ll_node import Node
+from tests.fixtures.ll_node import Node
 from treeviz.builders.linked_list import LinkedListGraph as LlBuilder
 from treeviz.exporters import png, dot
 

@@ -3,10 +3,10 @@ Tests Treeviz builders
 """
 import unittest
 from unittest import mock
-from fixtures import tree_utils as utils
+from tests.fixtures import tree_utils as utils
 #pylint: disable=no-name-in-module,import-error, protected-access, attribute-defined-outside-init
-from fixtures.bst import BinarySearchTree as Bst
-from fixtures.bst import Node
+from tests.fixtures.bst import BinarySearchTree as Bst
+from tests.fixtures.bst import Node
 from treeviz.builders.balanced_binary_tree import BalancedBinaryTreeGraph as BbtBuilder
 from treeviz.exporters import png, dot
 
