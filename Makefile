@@ -113,9 +113,8 @@ validate:
 # target: test-unit                    - Run tests in tests/unit with coverage.py
 .PHONY: test-unit
 test-unit: clean
-	@$(ECHO) "$(ACTION)---> Running all tests in tests/" "$(NO_COLOR)"
+	@$(ECHO) "$(ACTION)---> Running all tests in tests/unit" "$(NO_COLOR)"
 	@${py} \
-		-m coverage run --rcfile=.coveragerc \
 		-m unittest discover tests.unit
 	$(MAKE) clean-py
 
@@ -124,9 +123,8 @@ test-unit: clean
 # target: test-integration             - Run tests in tests/integration with coverage.py
 .PHONY: test-integration
 test-integration: clean
-	@$(ECHO) "$(ACTION)---> Running all tests in tests/" "$(NO_COLOR)"
+	@$(ECHO) "$(ACTION)---> Running all tests in tests/integration" "$(NO_COLOR)"
 	@${py} \
-		-m coverage run --rcfile=.coveragerc \
 		-m unittest discover tests.integration
 	$(MAKE) clean-py
 
@@ -134,9 +132,13 @@ test-integration: clean
 
 # target: test                         - Run tests and display code coverage
 .PHONY: test
-test: validate test-unit test-integration
+test: validate
+	@$(ECHO) "$(ACTION)---> Running all tests in tests/" "$(NO_COLOR)"
+	@${py} \
+		-m coverage run --rcfile=.coveragerc \
+		-m unittest discover tests
 	${py} -m coverage report  --rcfile=.coveragerc
-	$(MAKE) clean-cov
+	$(MAKE) clean
 
 
 
