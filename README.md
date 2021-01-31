@@ -33,13 +33,23 @@ Example for changing color on arrows and nodes for the BalancedBinaryTreeGraph.
 ```
 
 
+Development
+------------------------
+
+Run `make help` to see available commands.
+
+### Cygwin
+
+Integration tests don't work on cygwin. Images created on cygwin don't match with images created on Linux.
+
+
 
 # To-Do
 - [ ] Test on MacOS.
 - [ ] Test on Linux.
-- [ ] Add support for linked lists.
 - [ ] Add package to pip site so can pip install.
 - [ ] Fix a properly readme.
+- [X] Add support for linked lists.
 - [X] Tox.
 - [X] To not have .dot.json be mandatory.
 - [X] Turn it into pip project.
