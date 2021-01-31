@@ -5,7 +5,6 @@ Needs to have Graphviz installed and in path.
 import os
 import re
 import platform
-import wsl_path_converter as wpc
 
 POWERSHELL_PREFIX = "powershell.exe"
 DOT_EXE = "dot.exe"
@@ -61,4 +60,3 @@ def convert_cygwin_path_to_windows(dir_path):
     dirs = match.group(3).split('/')
     dirs[0] = f'{dirs[0].upper()}:'
     return '/'.join(dirs)
-

@@ -41,14 +41,12 @@ class TestPngExporter(unittest.TestCase):
 
 
 
-    @mock.patch("treeviz.exporters.png.wpc")
     @mock.patch("treeviz.exporters.png.platform")
-    def test_create_cmd_wsl(self, platform_mock, wpc_mock):
+    def test_create_cmd_wsl(self, platform_mock):
         """
         test the create_command function with wsl platform
         """
         platform_mock.platform.return_value = "Linux-4.4.0-17763-Microsoft-x86_64-with-Ubuntu-18.04-bionic"
-        wpc_mock.convert_m.return_value = "C:/Users/Zeldah/git/treeviz"
         dotfile = "tree.dot"
         pngfile = "tree.png"
         dir_path = "/c/Users/Zeldah/git/treeviz/"
