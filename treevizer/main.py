@@ -2,9 +2,9 @@
 Entrypoint for module
 Visualize tree datastructures.
 """
-from treeviz.exporters import dot, png
-from treeviz.builders.balanced_binary_tree import BalancedBinaryTreeGraph as bbt
-from treeviz.builders.linked_list import LinkedListGraph as ll
+from treevizer.exporters import dot, png
+from treevizer.builders.balanced_binary_tree import BalancedBinaryTreeGraph as bbt
+from treevizer.builders.linked_list import LinkedListGraph as ll
 
 AVAILABLE_TREES = "balanced binary tree (bbt), linked list (ll)"
 

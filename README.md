@@ -1,4 +1,4 @@
-# TreeViz
+# treevizer
 Repo for visualizing tree datasctructures in Python. Depend on Graphviz.
 
 It builds dot files based on linked node objects. It creates the dot files and then calls Grapviz to turn them into pictures.

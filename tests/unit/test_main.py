@@ -3,7 +3,7 @@ Test config reader
 """
 import unittest
 from unittest import mock
-from treeviz import main
+from treevizer import main
 
 class TestMain(unittest.TestCase):
     """Submodule for unittests, derives from unittest.TestCase"""
@@ -36,7 +36,7 @@ class TestMain(unittest.TestCase):
 
 
 
-    @mock.patch("treeviz.main.png")
+    @mock.patch("treevizer.main.png")
     def test_dot_to_png(self, mock_png):
         """
         Test that create_png is called correctly
@@ -46,9 +46,9 @@ class TestMain(unittest.TestCase):
 
 
 
-    @mock.patch("treeviz.main.dot")
-    @mock.patch("treeviz.main.ll")
-    @mock.patch("treeviz.main.png")
+    @mock.patch("treevizer.main.dot")
+    @mock.patch("treevizer.main.ll")
+    @mock.patch("treevizer.main.png")
     def test_tree_to_png_ll(self, mock_png, mock_ll, mock_dot):
         """
         Test that to_dot is called correctly for ll
@@ -62,8 +62,8 @@ class TestMain(unittest.TestCase):
 
 
 
-    @mock.patch("treeviz.main.dot")
-    @mock.patch("treeviz.main.ll")
+    @mock.patch("treevizer.main.dot")
+    @mock.patch("treevizer.main.ll")
     def test_tree_to_dot_ll(self, mock_ll, mock_dot):
         """
         Test that to_dot is called correctly for ll
@@ -75,8 +75,8 @@ class TestMain(unittest.TestCase):
 
 
 
-    @mock.patch("treeviz.main.dot")
-    @mock.patch("treeviz.main.bbt")
+    @mock.patch("treevizer.main.dot")
+    @mock.patch("treevizer.main.bbt")
     def test_tree_to_dot_bbt(self, mock_bbt, mock_dot):
         """
         Test that to_dot is called correctly for bbt

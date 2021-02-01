@@ -1,13 +1,13 @@
 """
-Tests Treeviz builders
+Tests treevizer builders
 """
 import unittest
 from unittest import mock
 from tests.fixtures import tree_utils as utils
 #pylint: disable=no-name-in-module,import-error, protected-access, attribute-defined-outside-init
 from tests.fixtures.ll_node import Node
-from treeviz.builders.linked_list import LinkedListGraph as LlBuilder
-from treeviz.exporters import png, dot
+from treevizer.builders.linked_list import LinkedListGraph as LlBuilder
+from treevizer.exporters import png, dot
 
 class TestBuilders(unittest.TestCase):
     """Submodule for unittests, derives from unittest.TestCase"""

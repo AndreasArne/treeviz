@@ -3,14 +3,14 @@ Test config reader
 """
 import unittest
 from unittest import mock
-from treeviz import config
+from treevizer import config
 
 class TestConfig(unittest.TestCase):
     """Submodule for unittests, derives from unittest.TestCase"""
 
 
 
-    @mock.patch("treeviz.config.read_config")
+    @mock.patch("treevizer.config.read_config")
     def test_get_config_missing_graphtype(self, mock_read):
         """
         Test that KeyError is raised when graph type is missing in default configs.
@@ -21,14 +21,14 @@ class TestConfig(unittest.TestCase):
 
 
 
-    @mock.patch("treeviz.config.read_config")
+    @mock.patch("treevizer.config.read_config")
     def test_get_config_merge_with_file(self, mock_read):
         """
         Test that config file gets merged with default if file exist.
         """
         mock_read.return_value = {"y": 1}
         graph_type = "x"
-        with mock.patch("treeviz.config.DEFAULT_DOT_CONFIGS", {"x": {"y": 2}}) as _:
+        with mock.patch("treevizer.config.DEFAULT_DOT_CONFIGS", {"x": {"y": 2}}) as _:
             self.assertEqual(
                 config.get_config(graph_type),
                 {"y": 1}
@@ -40,7 +40,7 @@ class TestConfig(unittest.TestCase):
         """
         Test that default config is returned when read_config returns None.
         """
-        with mock.patch('treeviz.config.read_config') as read_mock:
+        with mock.patch('treevizer.config.read_config') as read_mock:
             read_mock.return_value = None
         
             self.assertEqual(
@@ -50,8 +50,8 @@ class TestConfig(unittest.TestCase):
 
 
 
-    @mock.patch("treeviz.config.json")
-    @mock.patch("treeviz.config.Path")
+    @mock.patch("treevizer.config.json")
+    @mock.patch("treevizer.config.Path")
     def test_read_config(self, mock_path, mock_json):
         """
         Test that a graphs config i return from file if exist
@@ -71,8 +71,8 @@ class TestConfig(unittest.TestCase):
 
 
 
-    @mock.patch("treeviz.config.json")
-    @mock.patch("treeviz.config.Path")
+    @mock.patch("treevizer.config.json")
+    @mock.patch("treevizer.config.Path")
     def test_read_config_with_missing_graph_type(self, mock_path, mock_json):
         mock_path.is_file.return_value = True
         mock_json.load.return_value = {}

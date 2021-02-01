@@ -1,7 +1,7 @@
 """
 Contain class for building graph structure for linked list.
 """
-from treeviz.builders.base_graph import Graph
+from treevizer.builders.base_graph import Graph
 
 class LinkedListGraph(Graph):
     """

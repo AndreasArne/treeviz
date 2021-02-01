@@ -5,7 +5,7 @@ import unittest
 from unittest import mock
 from tests.fixtures import tree_utils as utils
 #pylint: disable=no-name-in-module,import-error, protected-access, attribute-defined-outside-init
-from treeviz.builders.base_graph import Graph
+from treevizer.builders.base_graph import Graph
 from tests.fixtures.ll_node import Node
 
 
@@ -55,7 +55,7 @@ class TestGraphBuilder(unittest.TestCase):
             self.g.vertexes[1] = src_mock
             
             with mock.patch.object(Graph, '_add_vertex', autospec=True, side_effect=side_effect):
-                with mock.patch('treeviz.builders.base_graph.Edge') as edgeMock:
+                with mock.patch('treevizer.builders.base_graph.Edge') as edgeMock:
                     self.g._add_edge(1, 2, "parent")
 
                     edgeMock.assert_called_once_with(src_id, dest_id, label="parent", color="red")
@@ -79,7 +79,7 @@ class TestGraphBuilder(unittest.TestCase):
         self.g.vertexes[1] = src_mock
         self.g.vertexes[2] = dest_mock
 
-        with mock.patch('treeviz.builders.base_graph.Edge') as edgeMock:
+        with mock.patch('treevizer.builders.base_graph.Edge') as edgeMock:
             self.g._add_edge(1, 2)
             
             edgeMock.assert_called_once_with(src_id, dest_id)
@@ -102,7 +102,7 @@ class TestGraphBuilder(unittest.TestCase):
         """
         add vertex correctly, no kwargs
         """
-        with mock.patch('treeviz.builders.base_graph.Vertex') as vertexMock:
+        with mock.patch('treevizer.builders.base_graph.Vertex') as vertexMock:
             self.g._add_vertex(2)
             vertexMock.assert_called_once_with(2)
             
@@ -114,7 +114,7 @@ class TestGraphBuilder(unittest.TestCase):
         """
         add vertex correctly with kwargs
         """
-        with mock.patch('treeviz.builders.base_graph.Vertex') as vertexMock:
+        with mock.patch('treevizer.builders.base_graph.Vertex') as vertexMock:
             self.g._add_vertex(2, style="filled", color="red")
 
             vertexMock.assert_called_once_with(2, style="filled", color="red")

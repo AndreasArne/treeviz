@@ -1,7 +1,7 @@
 """
 Exports graph to dot file.
 """
-from treeviz import config
+from treevizer import config
 
 def to_dot(graph, filename="tree.dot"):
     """

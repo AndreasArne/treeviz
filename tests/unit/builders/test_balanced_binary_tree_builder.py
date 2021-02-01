@@ -1,5 +1,5 @@
 """
-Tests Treeviz builders
+Tests treevizer builders
 """
 import unittest
 from unittest import mock
@@ -7,8 +7,8 @@ from tests.fixtures import tree_utils as utils
 #pylint: disable=no-name-in-module,import-error, protected-access, attribute-defined-outside-init
 from tests.fixtures.bst import BinarySearchTree as Bst
 from tests.fixtures.bst import Node
-from treeviz.builders.balanced_binary_tree import BalancedBinaryTreeGraph as BbtBuilder
-from treeviz.exporters import png, dot
+from treevizer.builders.balanced_binary_tree import BalancedBinaryTreeGraph as BbtBuilder
+from treevizer.exporters import png, dot
 
 class TestBuilders(unittest.TestCase):
     """Submodule for unittests, derives from unittest.TestCase"""
@@ -212,7 +212,7 @@ class TestBuilders(unittest.TestCase):
 
         with mock.patch.object(BbtBuilder, "_add_node_to_graph", lambda x, y: None): # Match number of args for init and return None
             with mock.patch.object(BbtBuilder, '_add_vertex', autospec=True, side_effect=add_vertex):
-                with mock.patch('treeviz.builders.balanced_binary_tree.Edge') as edgeMock:
+                with mock.patch('treevizer.builders.balanced_binary_tree.Edge') as edgeMock:
                     bbt = BbtBuilder("")
                     bbt.vertexes[src_key] = src_mock
                     bbt._add_invis_node(src_key)

@@ -2,8 +2,8 @@
 Uses invisible nodes to balances trees in graph.
 Based on https://stackoverflow.com/a/48198645 to balance tree.
 """
-from treeviz.builders.edge import Edge
-from treeviz.builders.base_graph import Graph
+from treevizer.builders.edge import Edge
+from treevizer.builders.base_graph import Graph
 
 class BalancedBinaryTreeGraph(Graph):
     """

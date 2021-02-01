@@ -1,8 +1,8 @@
 """
 Contain class for base class for other builders.
 """
-from treeviz.builders.vertex import Vertex
-from treeviz.builders.edge import Edge
+from treevizer.builders.vertex import Vertex
+from treevizer.builders.edge import Edge
 
 class Graph():
     """

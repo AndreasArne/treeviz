@@ -1,12 +1,12 @@
 import setuptools
-import treeviz
+import treevizer
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name='treeviz',
-    version=treeviz.__version__,
+    name='treevizer',
+    version=treevizer.__version__,
     author="Andreas Arnesson",
     author_email="aar@bth.se",
     description="A graph visualization tool",

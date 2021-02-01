@@ -106,7 +106,7 @@ release: tox build
 # target: install-local-build           - Install dist package locally.
 .PHONY: install-local-build
 install-local-build:
-	@${pip} uninstall treeviz
+	@${pip} uninstall treevizer
 	@${pip} install dist/*.whl
 
 
@@ -114,7 +114,7 @@ install-local-build:
 # target: validate                     - Validate code with pylint
 .PHONY: validate
 validate:
-	@pylint --rcfile=.pylintrc treeviz
+	@pylint --rcfile=.pylintrc treevizer
 
 
 
@@ -171,7 +171,7 @@ clean-cov:
 # target: clean-build                    - Remove all build files
 .PHONY: clean-build
 clean-build: clean-py
-	rm -rf treeviz.egg-info
+	rm -rf treevizer.egg-info
 	rm -rf dist
 	rm -rf build
 

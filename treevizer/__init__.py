@@ -1,8 +1,8 @@
 """
-Make treeviz a package.
+Make treevizer a package.
 Builds the public api with __all__.
 """
-from treeviz.main import tree_to_dot, tree_to_png, dot_to_png
+from treevizer.main import tree_to_dot, tree_to_png, dot_to_png
 
 __version__ = "0.0.4"
 
