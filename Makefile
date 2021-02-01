@@ -92,6 +92,14 @@ tox:
 .PHONY: build
 build: clean-build
 	@${py} setup.py bdist_wheel
+	@twine check dist/*
+
+
+
+# target: release                         - Upload dist folder to pip. First runs tox and builds code
+.PHONY: release
+release: tox build
+	@twine upload dist/*
 
 
 
