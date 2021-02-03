@@ -32,13 +32,6 @@ def create_cmd(dotfile, pngfile):
     if "cygwin" in info:
         dotfile = convert_cygwin_path_to_windows(dotfile)
         pngfile = convert_cygwin_path_to_windows(pngfile)
-    elif "darwin" in info or "linux" in info:
-        pass
-    else:
-        raise OSError(
-            "Don't know how to convert dot file to png! "
-            "You have to run graphviz manually to turn dot file to png."
-        )
 
     cmd = CMD_STR.format(
         dot=dot,
