@@ -1,0 +1,196 @@
+digraph {
+graph [
+  nodesep=0.25,
+  ranksep=0.3,
+  splines=line
+];
+node [
+  style=filled,
+  fillcolor=lightblue,
+  shape=circle,
+  fixedsize=true,
+  width=0.5
+];
+edge [
+  arrowsize=0.8,
+  color=black
+];
+
+10 [
+  label="10"
+];
+0 [
+  label="0"
+];
+i1 [
+  label="i1"
+  style="invis"
+];
+i2 [
+  label="i2"
+  style="invis"
+];
+2 [
+  label="2"
+];
+1 [
+  label="1"
+];
+i3 [
+  label="i3"
+  style="invis"
+];
+i4 [
+  label="i4"
+  style="invis"
+];
+i5 [
+  label="i5"
+  style="invis"
+];
+i6 [
+  label="i6"
+  style="invis"
+];
+i7 [
+  label="i7"
+  style="invis"
+];
+i8 [
+  label="i8"
+  style="invis"
+];
+20 [
+  label="20"
+];
+15 [
+  label="15"
+];
+i9 [
+  label="i9"
+  style="invis"
+];
+i10 [
+  label="i10"
+  style="invis"
+];
+i11 [
+  label="i11"
+  style="invis"
+];
+i12 [
+  label="i12"
+  style="invis"
+];
+33 [
+  label="33"
+];
+i13 [
+  label="i13"
+  style="invis"
+];
+i14 [
+  label="i14"
+  style="invis"
+];
+i15 [
+  label="i15"
+  style="invis"
+];
+0 -> 10 [
+
+];
+0 -> i1 [
+  style="invis"
+  weight="5"
+];
+0 -> i2 [
+  style="invis"
+  weight="5"
+];
+2 -> 0 [
+
+];
+1 -> 2 [
+
+];
+1 -> i3 [
+  style="invis"
+  weight="5"
+];
+1 -> i4 [
+  style="invis"
+  weight="5"
+];
+1 -> i5 [
+  style="invis"
+  weight="5"
+];
+2 -> 1 [
+
+];
+2 -> i6 [
+  style="invis"
+  weight="5"
+];
+2 -> i7 [
+  style="invis"
+  weight="5"
+];
+0 -> 2 [
+
+];
+10 -> 0 [
+
+];
+10 -> i8 [
+  style="invis"
+  weight="5"
+];
+20 -> 10 [
+
+];
+15 -> 20 [
+
+];
+15 -> i9 [
+  style="invis"
+  weight="5"
+];
+15 -> i10 [
+  style="invis"
+  weight="5"
+];
+15 -> i11 [
+  style="invis"
+  weight="5"
+];
+20 -> 15 [
+
+];
+20 -> i12 [
+  style="invis"
+  weight="5"
+];
+33 -> 20 [
+
+];
+33 -> i13 [
+  style="invis"
+  weight="5"
+];
+33 -> i14 [
+  style="invis"
+  weight="5"
+];
+33 -> i15 [
+  style="invis"
+  weight="5"
+];
+20 -> 33 [
+
+];
+10 -> 20 [
+
+];
+}
