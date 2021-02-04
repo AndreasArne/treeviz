@@ -15,7 +15,9 @@ Available types:
 
 ## [Unreleased]
 
-
+## [0.0.6] - 2021-02-04
+### Fixed
+- Fixed bug where Graphviz on MacOs didn't add newlines in labels.
 
 ## [0.0.5] - 2021-02-03
 ### Added
