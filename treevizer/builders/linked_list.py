@@ -12,7 +12,7 @@ class LinkedListGraph(Graph):
         """
         Recutsivly add node to the graph.
         """
-        label_template = "i={node_index}\nv={value}"
+        label_template = "i={node_index}\\nv={value}"
         node_index = 0
         value = node.data
 

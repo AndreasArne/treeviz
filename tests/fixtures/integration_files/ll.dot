@@ -15,32 +15,25 @@ edge [
 ];
 
 0 [
-  label="i=0
-v=10"
+  label="i=0\nv=10"
 ];
 1 [
-  label="i=1
-v=20"
+  label="i=1\nv=20"
 ];
 2 [
-  label="i=2
-v=0"
+  label="i=2\nv=0"
 ];
 3 [
-  label="i=3
-v=33"
+  label="i=3\nv=33"
 ];
 4 [
-  label="i=4
-v=2"
+  label="i=4\nv=2"
 ];
 5 [
-  label="i=5
-v=1"
+  label="i=5\nv=1"
 ];
 6 [
-  label="i=6
-v=test"
+  label="i=6\nv=test"
 ];
 0 -> 1 [
 

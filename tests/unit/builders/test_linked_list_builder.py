@@ -27,9 +27,9 @@ class TestBuilders(unittest.TestCase):
                 self.llb = LlBuilder(Node("1",Node(2, Node("te st"))))
 
                 vertex_calls = [
-                    mock.call(name=0, label='i=0\nv=1'),
-                    mock.call(name=1, label='i=1\nv=2'),
-                    mock.call(name=2, label='i=2\nv=te st'),
+                    mock.call(name=0, label='i=0\\nv=1'),
+                    mock.call(name=1, label='i=1\\nv=2'),
+                    mock.call(name=2, label='i=2\\nv=te st'),
                 ]
                 addVertexMock.assert_has_calls(vertex_calls)
                 self.assertEqual(addVertexMock.call_count, 3)
@@ -52,8 +52,8 @@ class TestBuilders(unittest.TestCase):
                 self.llb = LlBuilder(Node("1",Node(2)))
 
                 vertex_calls = [
-                    mock.call(name=0, label='i=0\nv=1'),
-                    mock.call(name=1, label='i=1\nv=2'),
+                    mock.call(name=0, label='i=0\\nv=1'),
+                    mock.call(name=1, label='i=1\\nv=2'),
                 ]
                 addVertexMock.assert_has_calls(vertex_calls)
                 self.assertEqual(addVertexMock.call_count, 2)
@@ -67,7 +67,7 @@ class TestBuilders(unittest.TestCase):
         """
         with mock.patch.object(LlBuilder, '_add_vertex') as addMock:
             self.llb = LlBuilder(Node(1))
-            addMock.assert_called_once_with(name=0, label="i=0\nv=1")
+            addMock.assert_called_once_with(name=0, label="i=0\\nv=1")
 
 
 
