@@ -141,7 +141,7 @@ For example to change color of Nodes in image for balanced binary tree use the f
 ```
 # .dot.json
 {
-    "BalancedBinaryTreeGraph": {
+    "BalancedBinaryTree": {
         "node": {
             "fillcolor": "green"
         }
@@ -154,7 +154,7 @@ To change size and shape of nodes and color of edges in Linked list use the foll
 ```
 # .dot.json
 {
-    "LinkedListGraph": {
+    "LinkedList": {
         "node": {
             "shape": "square",
             "width": 1.5

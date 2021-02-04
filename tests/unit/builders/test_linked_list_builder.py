@@ -6,7 +6,7 @@ from unittest import mock
 from tests.fixtures import tree_utils as utils
 #pylint: disable=no-name-in-module,import-error, protected-access, attribute-defined-outside-init
 from tests.fixtures.ll_node import Node
-from treevizer.builders.linked_list import LinkedListGraph as LlBuilder
+from treevizer.builders.linked_list import LinkedList as LlBuilder
 from treevizer.exporters import png, dot
 
 class TestBuilders(unittest.TestCase):

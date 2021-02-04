@@ -44,8 +44,8 @@ class TestConfig(unittest.TestCase):
             read_mock.return_value = None
         
             self.assertEqual(
-                config.get_config("BalancedBinaryTreeGraph"),
-                config.DEFAULT_DOT_CONFIGS["BalancedBinaryTreeGraph"]
+                config.get_config("BalancedBinaryTree"),
+                config.DEFAULT_DOT_CONFIGS["BalancedBinaryTree"]
             )
 
 

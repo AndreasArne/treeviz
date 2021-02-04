@@ -7,7 +7,7 @@ from tests.fixtures import tree_utils as utils
 #pylint: disable=no-name-in-module,import-error, protected-access, attribute-defined-outside-init
 from tests.fixtures.bst import BinarySearchTree as Bst
 from tests.fixtures.bst import Node
-from treevizer.builders.balanced_binary_tree import BalancedBinaryTreeGraph as BbtBuilder
+from treevizer.builders.balanced_binary_tree import BalancedBinaryTree as BbtBuilder
 from treevizer.exporters import png, dot
 
 class TestBuilders(unittest.TestCase):

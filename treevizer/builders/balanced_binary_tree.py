@@ -5,7 +5,7 @@ Based on https://stackoverflow.com/a/48198645 to balance tree.
 from treevizer.builders.edge import Edge
 from treevizer.builders.base_graph import Graph
 
-class BalancedBinaryTreeGraph(Graph):
+class BalancedBinaryTree(Graph):
     """
     Builder for Balanced Binary Trees with igraph
     """
