@@ -1,61 +1,184 @@
-# treevizer
-Repo for visualizing tree datasctructures in Python. Depend on Graphviz.
+# Treevizer
 
-It builds dot files based on linked node objects. It creates the dot files and then calls Grapviz to turn them into pictures.
-
-
-
-# Dependencies
-
-This repo use [Graphviz](https://www.graphviz.org/) to create pictures from dot files. After installing Graphviz don't forget too add it to Path!
+Visualize node data structures using [Graphviz](https://graphviz.org/).
 
 
 
-# Config
+## How it works
 
-It is possible to change the Dot configuration to alter the resulting graph. To se available options look at [Graphviz's Dot documentaion](https://graphviz.org/doc/info/attrs.html). Put configuration in json format in `.dot.json` in your project folder.
+Treevizer iterates over your datastructure to generate a DOT file and runs Graphviz turn it into an image. The datastructure needs to be built using Nodes.
 
-Available parts to configure are the entire graph, vertexes/nodes and edges/arrows.
+### Examples
 
-Example for changing color on arrows and nodes for the BalancedBinaryTreeGraph.
+#### Linked list
+
+<p align="center">
+  <img src="./img/ll.png" alt="Image of linked list">
+</p>
+
+#### Balanced binary tree
+
+<p align="center">
+  <img src="./img/bst.png" alt="Image of Balanced binary tree">
+</p>
+
+### Prerequisites
+
+You need to install [Graphviz](https://graphviz.org/download/) and make sure it is in $PATH.
+
+#### Cygwin
+
+Don't install Graphviz in Cygwin, do a windows installation. Otherwise there will be a problem with paths.
+
+
+
+### Installing
 
 ```
+pip install treevizer
+```
+
+
+
+## Usage
+
+The following structures are supported:
+
+### Linked list (ll)
+
+Require a Node class with the attributes that fulfill the following class diagram.
+
+<p align="center">
+  <img src="./img/ll_node_cls.png" alt="Class diagram of Node class for linked list.">
+</p>
+
+
+
+### Balanced binary tree (bbt)
+
+Require a Node class with the attributes that fulfill the following class diagram.
+
+<p align="center">
+  <img src="./img/bst_node_cls.png" alt="Class diagram of Node class for Balance binary tree.">
+</p>
+
+
+### Functions
+
+#### Structure to DOT file
+
+```python
+import Treevizer
+
+treevizer.to_dot(root, structure_type="bbt", dot_path="tree.dot"):
+    """
+    Generate DOT file from node structure.
+
+    Parameters
+    ----------
+    root : Node
+        Root node for datastructure
+    structure_type : str
+        Name of the type of datastructure (default is "bbt")
+    dot_path : str
+        Path to generated DOT file (default is tree.dot)
+    """
+```
+
+
+
+#### Structure to PNG
+
+This also creates a DOT file.
+
+```python
+import Treevizer
+
+treevizer.to_png(root, structure_type="bbt", dot_path="tree.dot", png_path="tree.png"):
+    """
+    Generate DOT file from node structure and use Graphviz to create image.
+
+    Parameters
+    ----------
+    root : Node
+        Root node for datastructure
+    structure_type : str
+        Name of the type of datastructure (default is "bbt")
+    dot_path : str
+        Path to generated DOT file (default is tree.dot)
+    png_path : str
+        Path to generated png file (default is tree.png)
+    """
+```
+
+
+
+#### DOT file to PNG
+
+```python
+import Treevizer
+
+treevizer.dot_to_png(dot_path="tree.dot", png_path="tree.png"):
+    """
+    Use Graphviz to create image from a DOT file.
+
+    Parameters
+    ----------
+    dot_path : str
+        Path to your DOT file (default is tree.dot)
+    png_path : str
+        Path to generated png file (default is tree.png)
+    """
+```
+
+
+### Configure
+
+Create `.dot.json` in root folder to change DOT configuration.  Available options can be found in [Graphviz documentation](https://graphviz.org/doc/info/attrs.html).
+
+For example to change color of Nodes in image for balanced binary tree use the following.
+
+```
+# .dot.json
 {
     "BalancedBinaryTreeGraph": {
         "node": {
-            "fillcolor": "green",
-        },
-        "edge": {
-            "color": "blue"
+            "fillcolor": "green"
         }
     }
 }
 ```
 
+To change size and shape of nodes and color of edges in Linked list use the following.
 
-Development
-------------------------
+```
+# .dot.json
+{
+    "LinkedListGraph": {
+        "node": {
+            "shape": "square",
+            "width": 1.5
+        },
+        "edge": {
+            "color": "red"
+        }
+    }
+}
+```
 
-Run `make help` to see available commands.
+## Known Errors/Warnings
 
-### Cygwin
-
-Integration tests don't work on cygwin. Images created on cygwin don't match with images created on Linux.
+[Known Errors and Warnings](https://github.com/AndreasArne/treeviz/issues/1)
 
 
 
-# To-Do
-- [ ] Test on MacOS.
-- [ ] Test on Linux.
-- [ ] Add package to pip site so can pip install.
-- [ ] Fix a properly readme.
-- [X] Add support for linked lists.
-- [X] Tox.
-- [X] To not have .dot.json be mandatory.
-- [X] Turn it into pip project.
-- [X] Fix main.tree_to_dot(). It does not work.
-- [X] Support cygwin.
-- [X] Add red color to edges who couldn't be added and the Node it adds.
-- [X] Remove depency on igraph. https://eli.thegreenplace.net/2009/11/23/visualizing-binary-trees-with-graphviz
-- [X] Test on WSL.
-- [X] Test on Cygwin - Can't install igraph. Not supported.
+## Links
+
+- [Pypi](https://pypi.org/project/treevizer/)
+- [Source code](https://github.com/AndreasArne/treeviz)
+
+
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
