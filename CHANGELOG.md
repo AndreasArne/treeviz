@@ -15,6 +15,10 @@ Available types:
 
 ## [Unreleased]
 
+## [0.0.7] - 2021-02-04
+### Changed
+- Renamed classes for more clear naming in configuration file.
+
 ## [0.0.6] - 2021-02-04
 ### Fixed
 - Fixed bug where Graphviz on MacOs didn't add newlines in labels.
