@@ -15,6 +15,10 @@ Available types:
 
 ## [Unreleased]
 
+## [0.0.8] - 2021-02-05
+### Changed
+- Renamed named parameters to match documentation.
+
 ## [0.0.7] - 2021-02-04
 ### Changed
 - Renamed classes for more clear naming in configuration file.
