@@ -8,7 +8,7 @@ from treevizer.builders.linked_list import LinkedList as ll
 
 AVAILABLE_TREES = "balanced binary tree (bbt), linked list (ll)"
 
-def tree_to_dot(root, tree_type="bbt", dot_path="tree.dot"):
+def to_dot(root, tree_type="bbt", dot_path="tree.dot"):
     """
     Create a dot file from tree datastructure
     """
@@ -30,11 +30,11 @@ def tree_to_dot(root, tree_type="bbt", dot_path="tree.dot"):
 
 
 
-def tree_to_png(root, graph, dot_path="tree.dot", png_path="tree.png"):
+def to_png(root, graph, dot_path="tree.dot", png_path="tree.png"):
     """
     Creates dot-file and png from tree structure
     """
-    tree_to_dot(root, graph, dot_path)
+    to_dot(root, graph, dot_path)
     png.create_png(dot_path, png_path)
 
 
