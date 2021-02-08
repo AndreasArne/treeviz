@@ -13,13 +13,13 @@ Treevizer iterates over your datastructure to generate a DOT file and runs Graph
 #### Linked list
 
 <p align="center">
-  <img src="./img/ll.png" alt="Image of linked list">
+  <img src="https://raw.githubusercontent.com/AndreasArne/treeviz/master/img/ll.png" alt="Image of linked list">
 </p>
 
 #### Balanced binary tree
 
 <p align="center">
-  <img src="./img/bst.png" alt="Image of Balanced binary tree">
+  <img src="https://raw.githubusercontent.com/AndreasArne/treeviz/master/img/bst.png" alt="Image of Balanced binary tree">
 </p>
 
 ### Prerequisites
@@ -49,7 +49,7 @@ The following structures are supported:
 Require a Node class with the attributes that fulfill the following class diagram.
 
 <p align="center">
-  <img src="./img/ll_node_cls.png" alt="Class diagram of Node class for linked list.">
+  <img src="https://raw.githubusercontent.com/AndreasArne/treeviz/master/img/ll_node_cls.png" alt="Class diagram of Node class for linked list.">
 </p>
 
 
@@ -59,7 +59,7 @@ Require a Node class with the attributes that fulfill the following class diagra
 Require a Node class with the attributes that fulfill the following class diagram.
 
 <p align="center">
-  <img src="./img/bst_node_cls.png" alt="Class diagram of Node class for Balance binary tree.">
+  <img src="https://raw.githubusercontent.com/AndreasArne/treeviz/master/img/bst_node_cls.png" alt="Class diagram of Node class for Balance binary tree.">
 </p>
 
 
