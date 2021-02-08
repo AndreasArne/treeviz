@@ -15,6 +15,10 @@ Available types:
 
 ## [Unreleased]
 
+## [0.0.9] - 2021-02-08
+### Changed
+- Fixed bug where methods names weren't updated with the documentation.
+
 ## [0.0.8] - 2021-02-05
 ### Changed
 - Renamed named parameters to match documentation.
