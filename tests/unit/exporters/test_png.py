@@ -23,12 +23,17 @@ class TestPngExporter(unittest.TestCase):
 
 
 
+    @mock.patch("treevizer.exporters.png.subprocess")
     @mock.patch("treevizer.exporters.png.platform")
-    def test_create_cmd_cygwin(self, platform_mock):
+    def test_create_cmd_cygwin(self, platform_mock, subprocess_mock):
         """
         test the create_command function with wsl platform
         """
         platform_mock.platform.return_value = "cygwin_nt-10.0-18363-3.1.7-340.x86_64-x86_64-64bit-windowspe"
+        subprocess_mock.check_output.side_effect = [
+            b'C:\\Users\\Zeldah\\git\\treevizer\\tree.dot\n',
+            b'C:\\Users\\Zeldah\\git\\treevizer\\tree.png\n',
+        ]
         dotfile = "tree.dot"
         pngfile = "tree.png"
         dir_path = "/c/Users/Zeldah/git/treevizer/"
@@ -36,7 +41,7 @@ class TestPngExporter(unittest.TestCase):
         cmd = png.create_cmd(dir_path+dotfile, dir_path+pngfile)
         self.assertEqual(
             cmd,
-            "dot -Tpng C:/Users/Zeldah/git/treevizer/tree.dot -o C:/Users/Zeldah/git/treevizer/tree.png"
+            'dot -Tpng "C:\\Users\\Zeldah\\git\\treevizer\\tree.dot" -o "C:\\Users\\Zeldah\\git\\treevizer\\tree.png"'
         )
 
 
@@ -54,7 +59,7 @@ class TestPngExporter(unittest.TestCase):
         cmd = png.create_cmd(dir_path+dotfile, dir_path+pngfile)
         self.assertEqual(
             cmd,
-            "dot -Tpng /c/Users/Zeldah/git/treevizer/tree.dot -o /c/Users/Zeldah/git/treevizer/tree.png"
+            'dot -Tpng "/c/Users/Zeldah/git/treevizer/tree.dot" -o "/c/Users/Zeldah/git/treevizer/tree.png"'
         )
 
 
@@ -70,7 +75,7 @@ class TestPngExporter(unittest.TestCase):
         dir_path = "/home/zeldah/git/treevizer/"
 
         cmd = png.create_cmd(dir_path+dotfile, dir_path+pngfile)
-        self.assertEqual(cmd, "dot -Tpng /home/zeldah/git/treevizer/tree.dot -o /home/zeldah/git/treevizer/tree.png")
+        self.assertEqual(cmd, 'dot -Tpng "/home/zeldah/git/treevizer/tree.dot" -o "/home/zeldah/git/treevizer/tree.png"')
 
 
 
@@ -85,7 +90,7 @@ class TestPngExporter(unittest.TestCase):
         dir_path = "/home/zeldah/git/treevizer/"
 
         cmd = png.create_cmd(dir_path+dotfile, dir_path+pngfile)
-        self.assertEqual(cmd, "dot -Tpng /home/zeldah/git/treevizer/tree.dot -o /home/zeldah/git/treevizer/tree.png")
+        self.assertEqual(cmd, 'dot -Tpng "/home/zeldah/git/treevizer/tree.dot" -o "/home/zeldah/git/treevizer/tree.png"')
 
 if __name__ == '__main__':
     unittest.main(verbosity=3)

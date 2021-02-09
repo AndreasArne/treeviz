@@ -4,12 +4,13 @@ Needs to have Graphviz installed and in path.
 """
 import os
 import re
+import subprocess
 import platform
 
 POWERSHELL_PREFIX = "powershell.exe"
 DOT_EXE = "dot.exe"
 DOT = "dot"
-CMD_STR = "{dot} -Tpng {dotfile} -o {pngfile}"
+CMD_STR = '{dot} -Tpng "{dotfile}" -o "{pngfile}"'
 
 def create_png(dotfile="tree.dot", pngfile="tree.png"):
     """
@@ -27,11 +28,10 @@ def create_cmd(dotfile, pngfile):
     Create terminal command for creating png of dot file.
     """
     dot = DOT
-
     info = platform.platform().lower()
     if "cygwin" in info:
-        dotfile = convert_cygwin_path_to_windows(dotfile)
-        pngfile = convert_cygwin_path_to_windows(pngfile)
+        dotfile = cyg_to_win_path(dotfile)
+        pngfile = cyg_to_win_path(pngfile)
 
     cmd = CMD_STR.format(
         dot=dot,
@@ -40,16 +40,8 @@ def create_cmd(dotfile, pngfile):
     )
     return cmd
 
-
-
-def convert_cygwin_path_to_windows(dir_path):
+def cyg_to_win_path(cyg_path):
     """
-    Solution from https://stackoverflow.com/a/50137718.
-    Changed "\\" to "/", otherwise dot does not find files.
+    Use "cygpath" on Cygwin to get windows type path which Graphviz can read.
     """
-    match = re.match('(/(cygdrive/)?)(.*)', dir_path)
-    if not match:
-        return dir_path.replace('/', '\\')
-    dirs = match.group(3).split('/')
-    dirs[0] = f'{dirs[0].upper()}:'
-    return '/'.join(dirs)
+    return subprocess.check_output(["cygpath", "-w", cyg_path]).strip(b"\n").decode()
