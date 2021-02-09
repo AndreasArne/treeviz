@@ -15,6 +15,10 @@ Available types:
 
 ## [Unreleased]
 
+## [0.0.10] - 2021-02-09
+### Fixed
+- Fixed bug where paths in cygwin weren't correctly converted to windows paths.
+
 ## [0.0.9] - 2021-02-08
 ### Changed
 - Fixed bug where methods names weren't updated with the documentation.
