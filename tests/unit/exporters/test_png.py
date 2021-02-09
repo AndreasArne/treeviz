@@ -13,16 +13,6 @@ from treevizer.exporters import png
 class TestPngExporter(unittest.TestCase):
     """Submodule for unittests, derives from unittest.TestCase"""
 
-    def test_convert_cygwin_path_to_windows(self):
-        """
-        Asser that cygrive path are converted correctly
-        """
-        dir_path = "/cygdrive/c/Users/Zeldah/git/treevizer"
-        path = png.convert_cygwin_path_to_windows(dir_path)
-        self.assertEqual(path, "C:/Users/Zeldah/git/treevizer")
-
-
-
     @mock.patch("treevizer.exporters.png.subprocess")
     @mock.patch("treevizer.exporters.png.platform")
     def test_create_cmd_cygwin(self, platform_mock, subprocess_mock):

@@ -3,7 +3,6 @@ Export dot file to png using Graphviz
 Needs to have Graphviz installed and in path.
 """
 import os
-import re
 import subprocess
 import platform
 
