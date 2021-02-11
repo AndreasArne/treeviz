@@ -68,7 +68,7 @@ Require a Node class with the attributes that fulfill the following class diagra
 #### Structure to DOT file
 
 ```python
-import Treevizer
+import treevizer
 
 treevizer.to_dot(root, structure_type="bbt", dot_path="tree.dot"):
     """
@@ -92,7 +92,7 @@ treevizer.to_dot(root, structure_type="bbt", dot_path="tree.dot"):
 This also creates a DOT file.
 
 ```python
-import Treevizer
+import treevizer
 
 treevizer.to_png(root, structure_type="bbt", dot_path="tree.dot", png_path="tree.png"):
     """
@@ -116,7 +116,7 @@ treevizer.to_png(root, structure_type="bbt", dot_path="tree.dot", png_path="tree
 #### DOT file to PNG
 
 ```python
-import Treevizer
+import treevizer
 
 treevizer.dot_to_png(dot_path="tree.dot", png_path="tree.png"):
     """

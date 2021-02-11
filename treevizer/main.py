@@ -8,7 +8,7 @@ from treevizer.builders.linked_list import LinkedList as ll
 
 AVAILABLE_TREES = "balanced binary tree (bbt), linked list (ll)"
 
-def to_dot(root, tree_type="bbt", dot_path="tree.dot"):
+def to_dot(root, structure_type="bbt", dot_path="tree.dot"):
     """
     Create a dot file from tree datastructure
     """
@@ -16,9 +16,9 @@ def to_dot(root, tree_type="bbt", dot_path="tree.dot"):
         raise ValueError("Tree is empty, cant vizualize empty trees!")
 
 
-    if tree_type == "bbt":
+    if structure_type == "bbt":
         g = bbt(root)
-    elif tree_type == "ll":
+    elif structure_type == "ll":
         g = ll(root)
     else:
         raise ValueError("We don't yet support that datastructre. Choose from {}."\
@@ -30,11 +30,11 @@ def to_dot(root, tree_type="bbt", dot_path="tree.dot"):
 
 
 
-def to_png(root, graph, dot_path="tree.dot", png_path="tree.png"):
+def to_png(root, structure_type="bbt", dot_path="tree.dot", png_path="tree.png"):
     """
     Creates dot-file and png from tree structure
     """
-    to_dot(root, graph, dot_path)
+    to_dot(root, structure_type, dot_path)
     png.create_png(dot_path, png_path)
 
 
