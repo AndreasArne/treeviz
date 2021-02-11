@@ -31,7 +31,7 @@ class TestPngExporter(unittest.TestCase):
         cmd = png.create_cmd(dir_path+dotfile, dir_path+pngfile)
         self.assertEqual(
             cmd,
-            'dot -Tpng "C:\\Users\\Zeldah\\git\\treevizer\\tree.dot" -o "C:\\Users\\Zeldah\\git\\treevizer\\tree.png"'
+            ['dot', '-Tpng', 'C:\\Users\\Zeldah\\git\\treevizer\\tree.dot', '-o', 'C:\\Users\\Zeldah\\git\\treevizer\\tree.png']
         )
 
 
@@ -49,7 +49,7 @@ class TestPngExporter(unittest.TestCase):
         cmd = png.create_cmd(dir_path+dotfile, dir_path+pngfile)
         self.assertEqual(
             cmd,
-            'dot -Tpng "/c/Users/Zeldah/git/treevizer/tree.dot" -o "/c/Users/Zeldah/git/treevizer/tree.png"'
+            ['dot', '-Tpng', '/c/Users/Zeldah/git/treevizer/tree.dot', '-o', '/c/Users/Zeldah/git/treevizer/tree.png']
         )
 
 
@@ -65,7 +65,10 @@ class TestPngExporter(unittest.TestCase):
         dir_path = "/home/zeldah/git/treevizer/"
 
         cmd = png.create_cmd(dir_path+dotfile, dir_path+pngfile)
-        self.assertEqual(cmd, 'dot -Tpng "/home/zeldah/git/treevizer/tree.dot" -o "/home/zeldah/git/treevizer/tree.png"')
+        self.assertEqual(
+            cmd,
+            ['dot', '-Tpng', '/home/zeldah/git/treevizer/tree.dot', '-o', '/home/zeldah/git/treevizer/tree.png']
+        )
 
 
 
@@ -80,7 +83,10 @@ class TestPngExporter(unittest.TestCase):
         dir_path = "/home/zeldah/git/treevizer/"
 
         cmd = png.create_cmd(dir_path+dotfile, dir_path+pngfile)
-        self.assertEqual(cmd, 'dot -Tpng "/home/zeldah/git/treevizer/tree.dot" -o "/home/zeldah/git/treevizer/tree.png"')
+        self.assertEqual(
+            cmd,
+            ['dot', '-Tpng', '/home/zeldah/git/treevizer/tree.dot', '-o', '/home/zeldah/git/treevizer/tree.png']
+        )
 
 if __name__ == '__main__':
     unittest.main(verbosity=3)

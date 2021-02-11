@@ -9,7 +9,7 @@ import platform
 POWERSHELL_PREFIX = "powershell.exe"
 DOT_EXE = "dot.exe"
 DOT = "dot"
-CMD_STR = '{dot} -Tpng "{dotfile}" -o "{pngfile}"'
+CMD_LIST = ['{dot_cmd}', '-Tpng', '"{dotfile}"', '-o', '"{pngfile}"']
 
 def create_png(dotfile="tree.dot", pngfile="tree.png"):
     """
@@ -18,7 +18,7 @@ def create_png(dotfile="tree.dot", pngfile="tree.png"):
     dotfile = os.path.abspath(dotfile)
     pngfile = os.path.abspath(pngfile)
     cmd = create_cmd(dotfile, pngfile)
-    os.system(cmd)
+    subprocess.run(cmd, check=True)
 
 
 
@@ -32,12 +32,15 @@ def create_cmd(dotfile, pngfile):
         dotfile = cyg_to_win_path(dotfile)
         pngfile = cyg_to_win_path(pngfile)
 
-    cmd = CMD_STR.format(
-        dot=dot,
-        dotfile=dotfile,
-        pngfile=pngfile,
-    )
+    DOT_CMD_INDX = 0
+    DOT_FILE_INDX = 2
+    PNGF_FILE_INDX = 4
+    cmd = CMD_LIST[:]
+    cmd[DOT_CMD_INDX] = dot
+    cmd[DOT_FILE_INDX] = f'{dotfile}'
+    cmd[PNGF_FILE_INDX] = f'{pngfile}'
     return cmd
+
 
 def cyg_to_win_path(cyg_path):
     """

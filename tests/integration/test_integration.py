@@ -26,8 +26,8 @@ class TestIntegration(unittest.TestCase):
         utils.list_to_bst([10, 20, 0, 33, 2,  1, 15], bst)
         
         with tempfile.TemporaryDirectory(dir="./") as tmpdirname:
-            treevizer.to_png(bst.root, "bbt", tmpdirname+"/tree.dot", tmpdirname+"/tree.png")
-            with open(tmpdirname+"/tree.dot", "rb") as test_dot:
+            treevizer.to_png(bst.root, "bbt", tmpdirname+"/tree file.dot", tmpdirname+"/tree.png")
+            with open(tmpdirname+"/tree file.dot", "rb") as test_dot:
                 with open("tests/fixtures/integration_files/bst.dot", "rb") as correct_dot:
                     self.assertEqual(test_dot.read(), correct_dot.read())
 
