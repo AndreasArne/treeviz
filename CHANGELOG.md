@@ -15,6 +15,10 @@ Available types:
 
 ## [Unreleased]
 
+## [0.0.11] - 2021-02-11
+### Fixed
+- Fixed bug where parameter names werent updated with the documentation.
+
 ## [0.0.10] - 2021-02-09
 ### Fixed
 - Fixed bug where paths in cygwin weren't correctly converted to windows paths.
