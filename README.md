@@ -8,6 +8,8 @@ Visualize node data structures using [Graphviz](https://graphviz.org/).
 
 Treevizer iterates over your datastructure to generate a DOT file and runs Graphviz turn it into an image. The datastructure needs to be built using Nodes.
 
+It also support recursive functions.
+
 ### Examples
 
 #### Linked list
@@ -20,6 +22,12 @@ Treevizer iterates over your datastructure to generate a DOT file and runs Graph
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/AndreasArne/treeviz/master/img/bst.png" alt="Image of Balanced binary tree">
+</p>
+
+#### Recursive Fibonacci
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/AndreasArne/treeviz/master/img/fibonacci.png" alt="Image of recursive Fibonacci function">
 </p>
 
 ### Prerequisites
@@ -46,6 +54,8 @@ The following structures are supported:
 
 ### Linked list (ll)
 
+Structure type is called "ll". The config key is called "LinkedList".
+
 Require a Node class with the attributes that fulfill the following class diagram.
 
 <p align="center">
@@ -56,11 +66,42 @@ Require a Node class with the attributes that fulfill the following class diagra
 
 ### Balanced binary tree (bbt)
 
+Structure type is called "bbt". The config key is called "BalancedBinaryTree".
+
 Require a Node class with the attributes that fulfill the following class diagram.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/AndreasArne/treeviz/master/img/bst_node_cls.png" alt="Class diagram of Node class for Balance binary tree.">
 </p>
+
+
+
+### Recursion
+
+The config key is called "Recursion".
+
+Decorate your recursive function with `recursion_viz`. It is possible to decorate multiple functions. Each function is identified by the name of your function when creating the PNG.
+
+#### Example
+```python
+import treevizer
+
+@treevizer.recursion_viz
+def a_rec_func():
+    a_rec_func()
+
+
+@treevizer.recursion_viz
+def another_rec_func():
+    another_rec_func()
+
+a_rec_func()
+another_rec_func()
+
+treevizer.recursion_to_png("a_rec_func", dot_path="recursion.dot", png_path="recursion.png")
+treevizer.recursion_to_png("another_rec_func", dot_path="rec2.dot", png_path="rec2.png")
+```
+
 
 
 ### Functions
@@ -70,7 +111,7 @@ Require a Node class with the attributes that fulfill the following class diagra
 ```python
 import treevizer
 
-treevizer.to_dot(root, structure_type="bbt", dot_path="tree.dot"):
+treevizer.to_dot(root, structure_type="bbt", dot_path="tree.dot")
     """
     Generate DOT file from node structure.
 
@@ -94,7 +135,7 @@ This also creates a DOT file.
 ```python
 import treevizer
 
-treevizer.to_png(root, structure_type="bbt", dot_path="tree.dot", png_path="tree.png"):
+treevizer.to_png(root, structure_type="bbt", dot_path="tree.dot", png_path="tree.png")
     """
     Generate DOT file from node structure and use Graphviz to create image.
 
@@ -113,12 +154,41 @@ treevizer.to_png(root, structure_type="bbt", dot_path="tree.dot", png_path="tree
 
 
 
+#### Recursion decorator
+
+This also creates a DOT file.
+
+```python
+import treevizer
+
+@treevizer.recursion_viz
+def a_recusive_function():
+    a_recusive_function()
+
+
+treevizer.recursion_to_png(function_name, dot_path="recursion.dot", png_path="recursion.png")
+    """
+    Generate DOT file of recursive function calls and use Graphviz to create image.
+
+    Parameters
+    ----------
+    function_name : str
+        Name of your decorated function.
+    dot_path : str
+        Path to generated DOT file (default is recursion.dot)
+    png_path : str
+        Path to generated png file (default is recursion.png)
+    """
+```
+
+
+
 #### DOT file to PNG
 
 ```python
 import treevizer
 
-treevizer.dot_to_png(dot_path="tree.dot", png_path="tree.png"):
+treevizer.dot_to_png(dot_path="tree.dot", png_path="tree.png")
     """
     Use Graphviz to create image from a DOT file.
 
@@ -162,6 +232,16 @@ To change size and shape of nodes and color of edges in Linked list use the foll
         "edge": {
             "color": "red"
         }
+    }
+}
+```
+
+To change color of the font on edge labels for recursion.
+
+```
+"Recursion": {
+    "edge": {
+        "fontcolor": "black"
     }
 }
 ```
