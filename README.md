@@ -239,9 +239,11 @@ To change size and shape of nodes and color of edges in Linked list use the foll
 To change color of the font on edge labels for recursion.
 
 ```
-"Recursion": {
-    "edge": {
-        "fontcolor": "black"
+{
+    "Recursion": {
+        "edge": {
+            "fontcolor": "black"
+        }
     }
 }
 ```
