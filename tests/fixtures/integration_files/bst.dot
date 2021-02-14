@@ -16,181 +16,181 @@ edge [
   color=black
 ];
 
-10 [
+v10 [
   label="10"
 ];
-0 [
+v0 [
   label="0"
 ];
-i1 [
+vi1 [
   label="i1"
   style="invis"
 ];
-i2 [
+vi2 [
   label="i2"
   style="invis"
 ];
-2 [
+v2 [
   label="2"
 ];
-1 [
+v1 [
   label="1"
 ];
-i3 [
+vi3 [
   label="i3"
   style="invis"
 ];
-i4 [
+vi4 [
   label="i4"
   style="invis"
 ];
-i5 [
+vi5 [
   label="i5"
   style="invis"
 ];
-i6 [
+vi6 [
   label="i6"
   style="invis"
 ];
-i7 [
+vi7 [
   label="i7"
   style="invis"
 ];
-i8 [
+vi8 [
   label="i8"
   style="invis"
 ];
-20 [
+v20 [
   label="20"
 ];
-15 [
+v15 [
   label="15"
 ];
-i9 [
+vi9 [
   label="i9"
   style="invis"
 ];
-i10 [
+vi10 [
   label="i10"
   style="invis"
 ];
-i11 [
+vi11 [
   label="i11"
   style="invis"
 ];
-i12 [
+vi12 [
   label="i12"
   style="invis"
 ];
-33 [
+v33 [
   label="33"
 ];
-i13 [
+vi13 [
   label="i13"
   style="invis"
 ];
-i14 [
+vi14 [
   label="i14"
   style="invis"
 ];
-i15 [
+vi15 [
   label="i15"
   style="invis"
 ];
-0 -> 10 [
+v0 -> v10 [
 
 ];
-0 -> i1 [
+v0 -> vi1 [
   style="invis"
   weight="5"
 ];
-0 -> i2 [
+v0 -> vi2 [
   style="invis"
   weight="5"
 ];
-2 -> 0 [
+v2 -> v0 [
 
 ];
-1 -> 2 [
+v1 -> v2 [
 
 ];
-1 -> i3 [
+v1 -> vi3 [
   style="invis"
   weight="5"
 ];
-1 -> i4 [
+v1 -> vi4 [
   style="invis"
   weight="5"
 ];
-1 -> i5 [
+v1 -> vi5 [
   style="invis"
   weight="5"
 ];
-2 -> 1 [
+v2 -> v1 [
 
 ];
-2 -> i6 [
+v2 -> vi6 [
   style="invis"
   weight="5"
 ];
-2 -> i7 [
+v2 -> vi7 [
   style="invis"
   weight="5"
 ];
-0 -> 2 [
+v0 -> v2 [
 
 ];
-10 -> 0 [
+v10 -> v0 [
 
 ];
-10 -> i8 [
+v10 -> vi8 [
   style="invis"
   weight="5"
 ];
-20 -> 10 [
+v20 -> v10 [
 
 ];
-15 -> 20 [
+v15 -> v20 [
 
 ];
-15 -> i9 [
+v15 -> vi9 [
   style="invis"
   weight="5"
 ];
-15 -> i10 [
+v15 -> vi10 [
   style="invis"
   weight="5"
 ];
-15 -> i11 [
+v15 -> vi11 [
   style="invis"
   weight="5"
 ];
-20 -> 15 [
+v20 -> v15 [
 
 ];
-20 -> i12 [
+v20 -> vi12 [
   style="invis"
   weight="5"
 ];
-33 -> 20 [
+v33 -> v20 [
 
 ];
-33 -> i13 [
+v33 -> vi13 [
   style="invis"
   weight="5"
 ];
-33 -> i14 [
+v33 -> vi14 [
   style="invis"
   weight="5"
 ];
-33 -> i15 [
+v33 -> vi15 [
   style="invis"
   weight="5"
 ];
-20 -> 33 [
+v20 -> v33 [
 
 ];
-10 -> 20 [
+v10 -> v20 [
 
 ];
 }
