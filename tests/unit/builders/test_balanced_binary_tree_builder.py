@@ -10,7 +10,7 @@ from tests.fixtures.bst import Node
 from treevizer.builders.balanced_binary_tree import BalancedBinaryTree as BbtBuilder
 from treevizer.exporters import png, dot
 
-class TestBuilders(unittest.TestCase):
+class TestBalanceBinaryTreeBuilder(unittest.TestCase):
     """Submodule for unittests, derives from unittest.TestCase"""
 
     # def test_bbt_to_png(self):

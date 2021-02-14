@@ -9,7 +9,7 @@ from tests.fixtures.ll_node import Node
 from treevizer.builders.linked_list import LinkedList as LlBuilder
 from treevizer.exporters import png, dot
 
-class TestBuilders(unittest.TestCase):
+class TestLinkedListBuilder(unittest.TestCase):
     """Submodule for unittests, derives from unittest.TestCase"""
     
     # def test_full(self):
