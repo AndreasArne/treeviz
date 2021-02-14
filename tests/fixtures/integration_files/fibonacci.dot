@@ -1,0 +1,91 @@
+digraph {
+graph [
+  rankdir=TB
+];
+node [
+  style=rounded,
+  shape=rectangle
+];
+edge [
+  arrowsize=1,
+  color=black,
+  fontsize=10,
+  fontcolor=gray45
+];
+
+v0 [
+  label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0"><TR><TD>fib(4)</TD></TR><HR/><TR><TD>return 3</TD></TR></TABLE>>
+];
+v1 [
+  label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0"><TR><TD>fib(n=3)</TD></TR><HR/><TR><TD>return 2</TD></TR></TABLE>>
+];
+v2 [
+  label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0"><TR><TD>fib(n=2)</TD></TR><HR/><TR><TD>return 1</TD></TR></TABLE>>
+];
+v3 [
+  label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0"><TR><TD>fib(n=1)</TD></TR><HR/><TR><TD>return 1</TD></TR></TABLE>>
+];
+v4 [
+  label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0"><TR><TD>fib(n=0)</TD></TR><HR/><TR><TD>return 0</TD></TR></TABLE>>
+];
+v5 [
+  label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0"><TR><TD>fib(n=1)</TD></TR><HR/><TR><TD>return 1</TD></TR></TABLE>>
+];
+v6 [
+  label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0"><TR><TD>fib(n=2)</TD></TR><HR/><TR><TD>return 1</TD></TR></TABLE>>
+];
+v7 [
+  label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0"><TR><TD>fib(n=1)</TD></TR><HR/><TR><TD>return 1</TD></TR></TABLE>>
+];
+v8 [
+  label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0"><TR><TD>fib(n=0)</TD></TR><HR/><TR><TD>return 0</TD></TR></TABLE>>
+];
+v0 -> v1 [
+  label="#1"
+];
+v1 -> v2 [
+  label="#2"
+];
+v2 -> v3 [
+  label="#3"
+];
+v3 -> v2 [
+  label="#4"
+];
+v2 -> v4 [
+  label="#5"
+];
+v4 -> v2 [
+  label="#6"
+];
+v2 -> v1 [
+  label="#7"
+];
+v1 -> v5 [
+  label="#8"
+];
+v5 -> v1 [
+  label="#9"
+];
+v1 -> v0 [
+  label="#10"
+];
+v0 -> v6 [
+  label="#11"
+];
+v6 -> v7 [
+  label="#12"
+];
+v7 -> v6 [
+  label="#13"
+];
+v6 -> v8 [
+  label="#14"
+];
+v8 -> v6 [
+  label="#15"
+];
+v6 -> v0 [
+  label="#16"
+];
+}

@@ -12,6 +12,21 @@ from collections.abc import MutableMapping
 
 
 DEFAULT_DOT_CONFIGS = {
+    "Recursion": {
+        "graph": {
+            "rankdir": "TB"
+        },
+        "node": {
+            "style": "rounded",
+            "shape": "rectangle",
+        },
+        "edge": {
+            "arrowsize": 1,
+            "color": "black",
+            "fontsize": 10,
+            "fontcolor": "gray45",
+        }
+    },
     "LinkedList": {
         "graph": {
             "rankdir": "LR"

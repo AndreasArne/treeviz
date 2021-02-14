@@ -1,6 +1,7 @@
 """
 Contain Vertex class for use in a graph
 """
+import copy
 class Vertex():
     """
     Vertex class
@@ -21,13 +22,25 @@ class Vertex():
         return self._id
 
 
+    def _build_node_string(self):
+        """
+        Copy options to local variable. If html_label, we wont delete it completely from vertex, only the local version.
+        """
+        options = copy.deepcopy(self.options)
+        node_list = []
+
+        if "html_label" in options:
+            node_list.append('label=<' + options["html_label"] + '>')
+            del options["html_label"]
+        for key, value in options.items():
+            node_list.append(f'{key}="{value}"')
+
+        return "\n  ".join(node_list)
 
     def __repr__(self):
         repr_ = "{} [\n  {}\n];".format(
             self._id,
-            "\n  ".join(
-                [f'{key}="{value}"'for key, value in self.options.items()]
-            )
+            self._build_node_string()
         )
         return repr_
 
