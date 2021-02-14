@@ -15,6 +15,10 @@ Available types:
 
 ## [Unreleased]
 
+## [0.1.0] - 2021-02-14
+### Added
+- Added possibility for visualizing recursive function calls.
+
 ## [0.0.11] - 2021-02-11
 ### Fixed
 - Fixed bug where parameter names werent updated with the documentation.

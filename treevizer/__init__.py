@@ -12,7 +12,7 @@ Given a version number MAJOR.MINOR.PATCH, increment the:
 from treevizer.main import to_dot, to_png, dot_to_png, recursion_to_png, recursion_viz
 
 
-__version__ = "0.0.11"
+__version__ = "0.1.0"
 
 # what is __all__ https://stackoverflow.com/a/35710527
 __all__ = [
