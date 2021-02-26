@@ -3,7 +3,7 @@ Entrypoint for module
 Visualize tree datastructures.
 """
 from functools import update_wrapper
-from treevizer.exporters import dot, png
+from treevizer.exporters import dot, png, gif
 from treevizer.builders.balanced_binary_tree import BalancedBinaryTree as bbt
 from treevizer.builders.linked_list import LinkedList as ll
 from treevizer.builders.recursion import Recursion
@@ -11,10 +11,24 @@ from treevizer.builders.recursion import Recursion
 AVAILABLE_TREES = "balanced binary tree (bbt), linked list (ll)"
 decorated_functions = {}
 
+
+def recursion_to_gif(function_name, gif_path="recursion.gif", duration=800, loop=0):
+    """
+    Use name of function as key to chose which graph to render.
+    Duration in miliseconds.
+    Loop: 0 = infinity, above is how many time to loop after 1 loop.
+    """
+    #pylint: disable=raise-missing-from
+    try:
+        decorated_function = decorated_functions[function_name]
+    except KeyError:
+        raise ValueError(f"No decorated function with the name {function_name} exist.")
+    gif.to_gif(decorated_function, gif_path, duration, loop)
+
+
 def recursion_to_png(function_name, dot_path="recursion.dot", png_path="recursion.png"):
     """
-    If multiple recursion decorators has been used, decoration_order can be used to decide which to render.
-    It should be an integer representing which recursion to render.
+    Use name of function as key to chose which graph to render
     """
     #pylint: disable=raise-missing-from
     try:

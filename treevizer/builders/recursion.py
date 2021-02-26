@@ -3,6 +3,7 @@
 Contain class for visualizing recursive function calls.
 """
 import html
+from collections import OrderedDict
 from treevizer.builders.edge import Edge
 from treevizer.builders.vertex import Vertex
 
@@ -15,7 +16,7 @@ class Recursion():
     def __init__(self, fn):
         self._call_counter = 0
         self._edge_counter = 0
-        self.vertexes = {}
+        self.vertexes = OrderedDict()
         self.edges = []
         self._stack = []
         self._fn = fn
@@ -59,38 +60,37 @@ class Recursion():
         )
         # create vertex
         label_table = label_table.replace("{call}", self._create_fn_call_str(args, kwargs))
-        self.vertexes[self._call_counter] = Vertex(self._call_counter, html_label=label_table)
-
+        vertex = Vertex(self._call_counter, html_label=label_table)
+        self.vertexes[vertex.id] = vertex
         # create call edge
         if self._call_counter > 0:
             self._edge_counter += 1
             self.edges.append(Edge(
-                self.vertexes[self._stack[-1]].id,
-                self.vertexes[self._call_counter].id,
+                self._stack[-1][1],
+                vertex.id,
                 label=f"#{self._edge_counter}"
             ))
 
         # add current NR to stack
-        self._stack.append(self._call_counter)
+        self._stack.append((self._call_counter, vertex.id))
         # Increase fpr next call
         self._call_counter += 1
         # call function
         result = self._fn(*args, **kwargs)
 
-        # get current NR for index
-        call_indx = self._stack.pop()
-        call_vertex = self.vertexes[call_indx]
         # update vertex with return value
-        call_vertex.options["html_label"] = call_vertex.options["html_label"].format(
+        vertex.options["html_label"] = vertex.options["html_label"].format(
             ret=html.escape(f"return {result}")
         )
 
+        # get current call number
+        call_nr = self._stack.pop()[0]
         # create return edge
-        if call_indx > 0:
+        if call_nr > 0:
             self._edge_counter += 1
             self.edges.append(Edge(
-                call_vertex.id,
-                self.vertexes[self._stack[-1]].id,
+                vertex.id,
+                self._stack[-1][1],
                 label=f"#{self._edge_counter}"
             ))
 

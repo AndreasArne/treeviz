@@ -1,0 +1,116 @@
+digraph {
+graph [
+  rankdir=TB
+];
+node [
+  style=rounded,
+  shape=rectangle
+];
+edge [
+  arrowsize=1,
+  color=black,
+  fontsize=10,
+  fontcolor=gray45
+];
+
+v0 [
+  label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0"><TR><TD>fib(4)</TD></TR><HR/><TR><TD>return 3</TD></TR></TABLE>>
+  style=""
+];
+v1 [
+  label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0"><TR><TD>fib(n=3)</TD></TR><HR/><TR><TD>return 2</TD></TR></TABLE>>
+  style=""
+];
+v2 [
+  label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0"><TR><TD>fib(n=2)</TD></TR><HR/><TR><TD>return 1</TD></TR></TABLE>>
+  style=""
+];
+v3 [
+  label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0"><TR><TD>fib(n=1)</TD></TR><HR/><TR><TD>return 1</TD></TR></TABLE>>
+  style=""
+];
+v4 [
+  label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0"><TR><TD>fib(n=0)</TD></TR><HR/><TR><TD>return 0</TD></TR></TABLE>>
+  style=""
+];
+v5 [
+  label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0"><TR><TD>fib(n=1)</TD></TR><HR/><TR><TD>return 1</TD></TR></TABLE>>
+  style=""
+];
+v6 [
+  label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0"><TR><TD>fib(n=2)</TD></TR><HR/><TR><TD>return 1</TD></TR></TABLE>>
+  style=""
+];
+v7 [
+  label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0"><TR><TD>fib(n=1)</TD></TR><HR/><TR><TD>return 1</TD></TR></TABLE>>
+  style=""
+];
+v8 [
+  label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0"><TR><TD>fib(n=0)</TD></TR><HR/><TR><TD>return 0</TD></TR></TABLE>>
+  style=""
+];
+v0 -> v1 [
+  label="#1"
+  style=""
+];
+v1 -> v2 [
+  label="#2"
+  style=""
+];
+v2 -> v3 [
+  label="#3"
+  style=""
+];
+v3 -> v2 [
+  label="#4"
+  style=""
+];
+v2 -> v4 [
+  label="#5"
+  style=""
+];
+v4 -> v2 [
+  label="#6"
+  style=""
+];
+v2 -> v1 [
+  label="#7"
+  style=""
+];
+v1 -> v5 [
+  label="#8"
+  style=""
+];
+v5 -> v1 [
+  label="#9"
+  style=""
+];
+v1 -> v0 [
+  label="#10"
+  style=""
+];
+v0 -> v6 [
+  label="#11"
+  style=""
+];
+v6 -> v7 [
+  label="#12"
+  style=""
+];
+v7 -> v6 [
+  label="#13"
+  style=""
+];
+v6 -> v8 [
+  label="#14"
+  style=""
+];
+v8 -> v6 [
+  label="#15"
+  style=""
+];
+v6 -> v0 [
+  label="#16"
+  style="invis"
+];
+}

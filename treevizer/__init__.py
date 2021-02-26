@@ -9,7 +9,14 @@ Given a version number MAJOR.MINOR.PATCH, increment the:
     MINOR version when you add functionality in a backwards compatible manner, and
     PATCH version when you make backwards compatible bug fixes.
 """
-from treevizer.main import to_dot, to_png, dot_to_png, recursion_to_png, recursion_viz
+from treevizer.main import (
+    to_dot,
+    to_png,
+    dot_to_png,
+    recursion_to_png,
+    recursion_viz,
+    recursion_to_gif,
+)
 
 
 __version__ = "0.1.0"
@@ -21,4 +28,5 @@ __all__ = [
     "dot_to_png",
     "recursion_to_png",
     "recursion_viz",
+    "recursion_to_gif",
 ]
