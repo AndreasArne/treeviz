@@ -15,6 +15,9 @@ Available types:
 
 ## [Unreleased]
 
+### Added
+- Added ability to create GIFs of recursion.
+
 ## [0.1.0] - 2021-02-14
 ### Added
 - Added possibility for visualizing recursive function calls.
