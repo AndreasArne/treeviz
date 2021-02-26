@@ -2,11 +2,13 @@
 Exports graph to dot file.
 """
 from treevizer import config
+from treevizer.exporters import utils
 
 def to_dot(graph, filename="tree.dot"):
     """
     Use igraph to write dot file and insert global graphviz settings in file.
     """
+    filename = utils.get_abspath(filename)
     string = build_string(graph)
     write_to_file(string, filename)
 
