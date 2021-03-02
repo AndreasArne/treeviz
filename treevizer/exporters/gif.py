@@ -8,14 +8,20 @@ import re
 import glob
 import copy
 import tempfile
-from PIL import Image
 from treevizer.exporters import dot, png
 from treevizer.exporters import utils
+try:
+    from PIL import Image
+except ImportError:
+    Image = None
 
 def to_gif(graph, gif_path="recursion.gif", duration=800, loop=0):
     """
     Make helper module for for cygwin path
     """
+    if Image is None:
+        raise ImportError("Missing package Pillow. Install it to create GIFs.")
+
     gif_path = utils.get_abspath(gif_path)
 
     with tempfile.TemporaryDirectory(dir="./") as tmpdir:
