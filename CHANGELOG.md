@@ -15,7 +15,11 @@ Available types:
 
 ## [Unreleased]
 
+
+
+## [0.2.0] - 2021-03-02
 ### Added
+- Added support to create graphs of Trie structures.
 - Added ability to create GIFs of recursion.
 
 ## [0.1.0] - 2021-02-14
