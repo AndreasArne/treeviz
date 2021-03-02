@@ -29,11 +29,12 @@ class Vertex():
         options = copy.deepcopy(self.options)
         node_list = []
 
-        if "html_label" in options:
-            node_list.append('label=<' + options["html_label"] + '>')
-            del options["html_label"]
         for key, value in options.items():
-            node_list.append(f'{key}="{value}"')
+            if key.startswith("html_"):
+                real_key = key.replace("html_", "")
+                node_list.append(f'{real_key}=<' + value + '>')
+            else:
+                node_list.append(f'{key}="{value}"')
 
         return "\n  ".join(node_list)
 
