@@ -14,7 +14,6 @@ class Graph():
         if node is None:
             raise ValueError("Node is empty, can't build Graph")
 
-        # used to give unique id to invis nodes
         self.vertexes = {}
         self.edges = []
         self._add_node_to_graph(node)

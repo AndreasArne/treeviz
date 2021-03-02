@@ -60,6 +60,22 @@ DEFAULT_DOT_CONFIGS = {
             "arrowsize": 0.8,
             "color": "black"
         }
+    },
+    "Trie": {
+        "graph": {
+            "nodesep": 0.25,
+            "ranksep": 0.3,
+            "splines": "line"
+        },
+        "node": {
+            "style": "filled",
+            "fillcolor": "lightblue",
+            "shape": "circle",
+        },
+        "edge": {
+            "arrowsize": 0.8,
+            "color": "black"
+        }
     }
 }
 

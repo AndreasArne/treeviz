@@ -8,6 +8,15 @@ from treevizer import config
 class TestConfig(unittest.TestCase):
     """Submodule for unittests, derives from unittest.TestCase"""
 
+    def test_config_has_correct_keys(self):
+        """
+        Test that all builders has default config
+        """
+        self.assertEqual(
+            ["Recursion", "LinkedList", "BalancedBinaryTree", "Trie"],
+            list(config.DEFAULT_DOT_CONFIGS.keys())
+        )
+
 
 
     @mock.patch("treevizer.config.read_config")

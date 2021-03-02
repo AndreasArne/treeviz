@@ -1,0 +1,125 @@
+digraph {
+graph [
+  nodesep=0.25,
+  ranksep=0.3,
+  splines=line
+];
+node [
+  style=filled,
+  fillcolor=lightblue,
+  shape=circle
+];
+edge [
+  arrowsize=0.8,
+  color=black
+];
+
+v [
+  label=""
+];
+vb [
+  label="b"
+];
+vba [
+  label="a"
+];
+vbal [
+  label="l"
+];
+vball [
+  label="l"
+  xlabel=<<FONT COLOR="grey25" POINT-SIZE="12">ball</FONT>>
+  fillcolor="forestgreen"
+  color="black"
+];
+vbat [
+  label="t"
+  xlabel=<<FONT COLOR="grey25" POINT-SIZE="12">bat</FONT>>
+  fillcolor="forestgreen"
+  color="black"
+];
+vc [
+  label="c"
+];
+vca [
+  label="a"
+];
+vcat [
+  label="t"
+  xlabel=<<FONT COLOR="grey25" POINT-SIZE="12">cat</FONT>>
+  fillcolor="forestgreen"
+  color="black"
+];
+va [
+  label="a"
+  xlabel=<<FONT COLOR="grey25" POINT-SIZE="12">a</FONT>>
+  fillcolor="forestgreen"
+  color="black"
+];
+vh [
+  label="h"
+];
+vhe [
+  label="e"
+  xlabel=<<FONT COLOR="grey25" POINT-SIZE="12">he</FONT>>
+  fillcolor="forestgreen"
+  color="black"
+];
+vhea [
+  label="a"
+];
+vheat [
+  label="t"
+  xlabel=<<FONT COLOR="grey25" POINT-SIZE="12">heat</FONT>>
+  fillcolor="forestgreen"
+  color="black"
+];
+vhen [
+  label="n"
+  xlabel=<<FONT COLOR="grey25" POINT-SIZE="12">hen</FONT>>
+  fillcolor="forestgreen"
+  color="black"
+];
+vbal -> vball [
+
+];
+vba -> vbal [
+
+];
+vba -> vbat [
+
+];
+vb -> vba [
+
+];
+v -> vb [
+
+];
+vca -> vcat [
+
+];
+vc -> vca [
+
+];
+v -> vc [
+
+];
+v -> va [
+
+];
+vhea -> vheat [
+
+];
+vhe -> vhea [
+
+];
+vhe -> vhen [
+
+];
+vh -> vhe [
+
+];
+v -> vh [
+
+];
+}

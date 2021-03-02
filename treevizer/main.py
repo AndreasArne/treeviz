@@ -6,9 +6,10 @@ from functools import update_wrapper
 from treevizer.exporters import dot, png, gif
 from treevizer.builders.balanced_binary_tree import BalancedBinaryTree as bbt
 from treevizer.builders.linked_list import LinkedList as ll
+from treevizer.builders.trie import Trie as trie
 from treevizer.builders.recursion import Recursion
 
-AVAILABLE_TREES = "balanced binary tree (bbt), linked list (ll)"
+AVAILABLE_TREES = "balanced binary tree (bbt), linked list (ll), trie (trie)"
 decorated_functions = {}
 
 
@@ -24,6 +25,7 @@ def recursion_to_gif(function_name, gif_path="recursion.gif", duration=800, loop
     except KeyError:
         raise ValueError(f"No decorated function with the name {function_name} exist.")
     gif.to_gif(decorated_function, gif_path, duration, loop)
+
 
 
 def recursion_to_png(function_name, dot_path="recursion.dot", png_path="recursion.png"):
@@ -64,6 +66,8 @@ def to_dot(root, structure_type="bbt", dot_path="tree.dot"):
         g = bbt(root)
     elif structure_type == "ll":
         g = ll(root)
+    elif structure_type == "trie":
+        g = trie(root)
     else:
         raise ValueError("We don't yet support that datastructre. Choose from {}."\
             .format(

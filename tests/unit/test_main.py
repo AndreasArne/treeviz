@@ -16,7 +16,23 @@ class TestMain(unittest.TestCase):
         """
         Assert constant variables are as expected
         """
-        self.assertEqual(main.AVAILABLE_TREES, "balanced binary tree (bbt), linked list (ll)")
+        self.assertEqual(main.AVAILABLE_TREES, "balanced binary tree (bbt), linked list (ll), trie (trie)")
+
+
+
+    @mock.patch("treevizer.main.dot")
+    @mock.patch("treevizer.main.trie")
+    @mock.patch("treevizer.main.png")
+    def test_to_png_trie(self, mock_png, mock_trie, mock_dot):
+        """
+        Test that to_dot is called correctly for trie
+        and create_png is called.
+        """
+        node_mock = mock.MagicMock()
+        main.to_png(node_mock, "trie", "trie.dot")
+        mock_trie.assert_called_once_with(node_mock)
+        mock_dot.to_dot.assert_called_once_with(mock_trie(), "trie.dot")
+        mock_png.create_png.assert_called_once_with("trie.dot", "tree.png")
 
 
 
@@ -73,7 +89,7 @@ class TestMain(unittest.TestCase):
         """
         node_mock = mock.MagicMock()
         with self.assertRaises(ValueError):
-            main.to_dot(node_mock, "trie")
+            main.to_dot(node_mock, "hash table")
 
 
 
