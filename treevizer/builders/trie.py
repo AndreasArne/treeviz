@@ -13,7 +13,7 @@ class Trie(Graph):
         """
         Recutsivly add tree node to the graph.
         """
-        value = node.value
+        value = str(node.value)
         word += value
         children = node.children
 
