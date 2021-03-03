@@ -52,7 +52,7 @@ Don't install Graphviz in Cygwin, do a windows installation. Otherwise there wil
 
 Pillow is optional, it is only used to create GIFs. If you don't want to create GIFs you don't need to install it.
 
-Don't install Pillow with pip, instead do it with a Cygwin package. Install the Cygwin package `python3X-imagin`, replace `X` with your Python version.
+Don't install Pillow with pip, instead do it with a Cygwin package. Install the Cygwin package `python3X-imaging`, replace `X` with your Python version.
 
 
 
