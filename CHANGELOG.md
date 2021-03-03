@@ -16,6 +16,9 @@ Available types:
 ## [Unreleased]
 
 
+## [0.2.1] - 2021-03-03
+### Fixed
+- Trie structures can now have other node values than string type.
 
 ## [0.2.0] - 2021-03-02
 ### Added
