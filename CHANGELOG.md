@@ -14,7 +14,8 @@ Available types:
 - `Security` in case of vulnerabilities.
 
 ## [Unreleased]
-
+### Security
+- Bumped pillow version to 8.1.1 to avoid DDOS security threat.
 
 ## [0.2.1] - 2021-03-03
 ### Fixed
