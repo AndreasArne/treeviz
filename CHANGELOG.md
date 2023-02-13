@@ -14,8 +14,10 @@ Available types:
 - `Security` in case of vulnerabilities.
 
 ## [Unreleased]
+
+## [0.2.2] - 2023-02-13
 ### Security
-- Bumped pillow version to 8.1.1 to avoid DDOS security threat.
+- Bumped pillow version to 9.4 to avoid DDOS security threat and support Python3.10.
 
 ## [0.2.1] - 2021-03-03
 ### Fixed

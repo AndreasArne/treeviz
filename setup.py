@@ -18,13 +18,14 @@ setuptools.setup(
         "tests"
     ]),
     install_requires=[
-        'Pillow==8.1.1;sys_platform!="cygwin"', # https://www.python.org/dev/peps/pep-0508/
+        'Pillow~=9.4;sys_platform!="cygwin"', # https://www.python.org/dev/peps/pep-0508/
     ],
-    python_requires='>=3.6',
+    python_requires='>=3.7',
     classifiers=[
-        "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
         "Intended Audience :: Education",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
