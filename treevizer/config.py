@@ -13,9 +13,7 @@ from collections.abc import MutableMapping
 
 DEFAULT_DOT_CONFIGS = {
     "Recursion": {
-        "graph": {
-            "rankdir": "TB"
-        },
+        "graph": {"rankdir": "TB"},
         "node": {
             "style": "rounded",
             "shape": "rectangle",
@@ -25,62 +23,42 @@ DEFAULT_DOT_CONFIGS = {
             "color": "black",
             "fontsize": 10,
             "fontcolor": "gray45",
-        }
+        },
     },
     "LinkedList": {
-        "graph": {
-            "rankdir": "LR"
-        },
+        "graph": {"rankdir": "LR"},
         "node": {
             "style": "filled",
             "fillcolor": "lightblue",
             "shape": "circle",
             "fixedsize": "true",
-            "width": 1
+            "width": 1,
         },
-        "edge": {
-            "arrowsize": 1,
-            "color": "black"
-        }
+        "edge": {"arrowsize": 1, "color": "black"},
     },
     "BalancedBinaryTree": {
-        "graph": {
-            "nodesep": 0.25,
-            "ranksep": 0.3,
-            "splines": "line"
-        },
+        "graph": {"nodesep": 0.25, "ranksep": 0.3, "splines": "line"},
         "node": {
             "style": "filled",
             "fillcolor": "lightblue",
             "shape": "circle",
             "fixedsize": "true",
-            "width": 0.5
+            "width": 0.5,
         },
-        "edge": {
-            "arrowsize": 0.8,
-            "color": "black"
-        }
+        "edge": {"arrowsize": 0.8, "color": "black"},
     },
     "Trie": {
-        "graph": {
-            "nodesep": 0.25,
-            "ranksep": 0.3,
-            "splines": "line"
-        },
+        "graph": {"nodesep": 0.25, "ranksep": 0.3, "splines": "line"},
         "node": {
             "style": "filled",
             "fillcolor": "lightblue",
             "shape": "circle",
         },
-        "edge": {
-            "arrowsize": 0.8,
-            "color": "black"
-        }
-    }
+        "edge": {"arrowsize": 0.8, "color": "black"},
+    },
 }
 
 CONFIG_FILENAME = ".dot.json"
-
 
 
 def get_config(graph_type):
@@ -90,14 +68,10 @@ def get_config(graph_type):
 
     file_config = read_config(graph_type)
     if file_config is not None:
-        merged_config = merge_configs(
-            DEFAULT_DOT_CONFIGS[graph_type],
-            file_config
-        )
+        merged_config = merge_configs(DEFAULT_DOT_CONFIGS[graph_type], file_config)
         return merged_config
 
     return DEFAULT_DOT_CONFIGS[graph_type]
-
 
 
 def read_config(graph_type):
@@ -106,19 +80,19 @@ def read_config(graph_type):
     """
     config_file = Path(CONFIG_FILENAME)
     if config_file.is_file():
-        with open(CONFIG_FILENAME) as fd:
+        with open(CONFIG_FILENAME, encoding="utf-8") as fd:
             config_json = json.load(fd)
         return config_json.get(graph_type, None)
     return None
 
 
 def merge_configs(d1, d2):
-    '''
+    """
     Update two dicts of dicts recursively,
     if either mapping has leaves that are non-dicts,
     the second's leaf overwrites the first's.
     https://stackoverflow.com/a/24088493
-    '''
+    """
     for k, v in d1.items():
         if k in d2:
             # if both values from d1 and d2 are of instance MutableMapping

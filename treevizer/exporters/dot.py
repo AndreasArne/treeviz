@@ -4,6 +4,7 @@ Exports graph to dot file.
 from treevizer import config
 from treevizer.exporters import utils
 
+
 def to_dot(graph, filename="tree.dot"):
     """
     Use igraph to write dot file and insert global graphviz settings in file.
@@ -13,14 +14,12 @@ def to_dot(graph, filename="tree.dot"):
     write_to_file(string, filename)
 
 
-
 def write_to_file(content, filename):
     """
     Write string to file
     """
-    with open(filename, "w") as fd:
+    with open(filename, "w", encoding="utf-8") as fd:
         fd.write(content)
-
 
 
 def create_config_str(graph_type):
@@ -34,7 +33,6 @@ def create_config_str(graph_type):
         options = [f"  {key}={value}" for key, value in values.items()]
         config_str += graph_part + " [\n" + ",\n".join(options) + "\n];\n"
     return config_str
-
 
 
 def build_string(graph):
