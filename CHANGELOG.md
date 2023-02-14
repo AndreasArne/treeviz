@@ -15,6 +15,10 @@ Available types:
 
 ## [Unreleased]
 
+## [0.2.3] - 2023-02-14
+### fixed
+- Previous release didn't work. Rewrote code with validation.
+
 ## [0.2.2] - 2023-02-13
 ### Security
 - Bumped pillow version to 9.4 to avoid DDOS security threat and support Python3.10.
