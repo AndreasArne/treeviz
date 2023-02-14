@@ -43,10 +43,5 @@ def build_string(graph):
     nodes = "\n".join([repr(vertex) for vertex in graph.vertexes.values()])
     edges = "\n".join([repr(edge) for edge in graph.edges])
 
-    dot_string = "{graph_type} {{\n{config}\n{nodes}\n{edges}\n}}".format(
-        graph_type=graph.graph_type(),
-        config=graph_settings,
-        nodes=nodes,
-        edges=edges,
-    )
+    dot_string = f"{graph.graph_type()} {{\n{graph_settings}\n{nodes}\n{edges}\n}}"
     return dot_string

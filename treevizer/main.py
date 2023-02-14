@@ -69,10 +69,7 @@ def to_dot(root, structure_type="bbt", dot_path="tree.dot"):
     elif structure_type == "trie":
         g = trie(root)
     else:
-        raise ValueError("We don't yet support that datastructre. Choose from {}."\
-            .format(
-                AVAILABLE_TREES
-            ))
+        raise ValueError(f"We don't yet support that datastructre. Choose from {AVAILABLE_TREES}.")
 
     dot.to_dot(g, dot_path)
 

@@ -17,11 +17,7 @@ class Edge():
             [f'  {key}="{value}"' for key, value in self.options.items()]
         )
 
-        repr_ = "{src} -> {dest} [\n{options}\n];".format(
-            src=self.src,
-            dest=self.dest,
-            options=options,
-        )
+        repr_ = f"{self.src} -> {self.dest} [\n{options}\n];"
         return repr_
 
 

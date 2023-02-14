@@ -39,10 +39,7 @@ class Vertex():
         return "\n  ".join(node_list)
 
     def __repr__(self):
-        repr_ = "{} [\n  {}\n];".format(
-            self._id,
-            self._build_node_string()
-        )
+        repr_ = f"{self._id} [\n  {self._build_node_string()}\n];"
         return repr_
 
 
