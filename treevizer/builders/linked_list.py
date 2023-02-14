@@ -3,6 +3,7 @@ Contain class for building graph structure for linked list.
 """
 from treevizer.builders.base_graph import Graph
 
+
 class LinkedList(Graph):
     """
     Builder for Linked lists graph

@@ -6,6 +6,7 @@ import os
 import platform
 import subprocess
 
+
 def get_abspath(path):
     """
     Create absolute path for all OS.
@@ -16,7 +17,6 @@ def get_abspath(path):
     if "cygwin" in info:
         path = cyg_to_win_path(path)
     return path
-
 
 
 def cyg_to_win_path(cyg_path):

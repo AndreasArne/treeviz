@@ -8,7 +8,8 @@ from treevizer.exporters import utils
 POWERSHELL_PREFIX = "powershell.exe"
 DOT_EXE = "dot.exe"
 DOT = "dot"
-CMD_LIST = ['{dot_cmd}', '-Tpng', '"{dotfile}"', '-o', '"{pngfile}"']
+CMD_LIST = ["{dot_cmd}", "-Tpng", '"{dotfile}"', "-o", '"{pngfile}"']
+
 
 def create_png(dotfile="tree.dot", pngfile="tree.png"):
     """
@@ -18,7 +19,6 @@ def create_png(dotfile="tree.dot", pngfile="tree.png"):
     pngfile = utils.get_abspath(pngfile)
     cmd = create_cmd(dotfile, pngfile)
     subprocess.run(cmd, check=True)
-
 
 
 def create_cmd(dotfile, pngfile):
@@ -31,6 +31,6 @@ def create_cmd(dotfile, pngfile):
     PNGF_FILE_INDX = 4
     cmd = CMD_LIST[:]
     cmd[DOT_CMD_INDX] = dot
-    cmd[DOT_FILE_INDX] = f'{dotfile}'
-    cmd[PNGF_FILE_INDX] = f'{pngfile}'
+    cmd[DOT_FILE_INDX] = f"{dotfile}"
+    cmd[PNGF_FILE_INDX] = f"{pngfile}"
     return cmd

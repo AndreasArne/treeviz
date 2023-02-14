@@ -5,6 +5,7 @@ Based on https://stackoverflow.com/a/48198645 to balance tree.
 from treevizer.builders.edge import Edge
 from treevizer.builders.base_graph import Graph
 
+
 class BalancedBinaryTree(Graph):
     """
     Builder for Balanced Binary Trees with igraph
@@ -14,8 +15,6 @@ class BalancedBinaryTree(Graph):
         # used to give unique id to invis nodes
         self.invis_counter = 0
         super().__init__(node)
-
-
 
     def _add_node_to_graph(self, node):
         """
@@ -45,8 +44,6 @@ class BalancedBinaryTree(Graph):
         else:
             self._add_invis_node(key)
 
-
-
     def _add_invis_node(self, key):
         """
         Add invis nodes to balance the tree.
@@ -58,9 +55,11 @@ class BalancedBinaryTree(Graph):
         inv_key = "i" + str(self.invis_counter)
         self._add_vertex(inv_key, label=inv_key, style="invis")
 
-        self.edges.append(Edge(
-            self.vertexes[key].id,
-            self.vertexes[inv_key].id,
-            style="invis",
-            weight=5
-        ))
+        self.edges.append(
+            Edge(
+                self.vertexes[key].id,
+                self.vertexes[inv_key].id,
+                style="invis",
+                weight=5,
+            )
+        )

@@ -10,10 +10,12 @@ import copy
 import tempfile
 from treevizer.exporters import dot, png
 from treevizer.exporters import utils
+
 try:
     from PIL import Image
 except ImportError:
     Image = None
+
 
 def to_gif(graph, gif_path="recursion.gif", duration=800, loop=0):
     """
@@ -30,17 +32,16 @@ def to_gif(graph, gif_path="recursion.gif", duration=800, loop=0):
         create_gif(tmpdir, gif_path, duration, loop)
 
 
-
 def natural_keys(text):
-    '''
+    """
     alist.sort(key=natural_keys) sorts in human order
     http://nedbatchelder.com/blog/200712/human_sorting.html
-    '''
+    """
+
     def atoi(text):
         return int(text) if text.isdigit() else text
 
-    return [ atoi(c) for c in re.split(r'(\d+)', text) ]
-
+    return [atoi(c) for c in re.split(r"(\d+)", text)]
 
 
 def create_gif(tmpdir, gif_path, duration, loop):
@@ -49,9 +50,15 @@ def create_gif(tmpdir, gif_path, duration, loop):
     """
     glob_pattern = f"{tmpdir}/*.png"
     imgs = [Image.open(f) for f in sorted(glob.glob(glob_pattern), key=natural_keys)]
-    imgs[0].save(fp=gif_path, format='GIF', append_images=imgs[1:],
-         save_all=True, duration=duration, loop=loop, optimize=True)
-
+    imgs[0].save(
+        fp=gif_path,
+        format="GIF",
+        append_images=imgs[1:],
+        save_all=True,
+        duration=duration,
+        loop=loop,
+        optimize=True,
+    )
 
 
 def create_images(tmpdir):
@@ -59,8 +66,10 @@ def create_images(tmpdir):
     create images of dot files
     """
     glob_pattern = f"{tmpdir}/*.dot"
-    _ = [png.create_png(f, f.replace(".dot", ".png")) for f in sorted(glob.glob(glob_pattern))]
-
+    _ = [
+        png.create_png(f, f.replace(".dot", ".png"))
+        for f in sorted(glob.glob(glob_pattern))
+    ]
 
 
 def create_dot_frames(graph, tmp_path):
@@ -87,15 +96,26 @@ def create_dot_frames(graph, tmp_path):
 
     # restore style on current frame and output dot code for frames
     for index, edge in enumerate(edges):
-        write_dot_frame(graph.vertexes[edge.src], vertexes[edge.src], f"{tmp_path}/frame{frame_counter}.dot", graph)
+        write_dot_frame(
+            graph.vertexes[edge.src],
+            vertexes[edge.src],
+            f"{tmp_path}/frame{frame_counter}.dot",
+            graph,
+        )
         frame_counter += 1
 
-        write_dot_frame(graph.edges[index], edge, f"{tmp_path}/frame{frame_counter}.dot", graph)
+        write_dot_frame(
+            graph.edges[index], edge, f"{tmp_path}/frame{frame_counter}.dot", graph
+        )
         frame_counter += 1
 
-        write_dot_frame(graph.vertexes[edge.dest], vertexes[edge.dest], f"{tmp_path}/frame{frame_counter}.dot", graph)
+        write_dot_frame(
+            graph.vertexes[edge.dest],
+            vertexes[edge.dest],
+            f"{tmp_path}/frame{frame_counter}.dot",
+            graph,
+        )
         frame_counter += 1
-
 
 
 def write_dot_frame(graph_element, copy_element, path, graph):
@@ -103,6 +123,9 @@ def write_dot_frame(graph_element, copy_element, path, graph):
     If original style is not invis and style in graph is not already updated
     to original value, create frame.
     """
-    if graph_element.options["style"] == "invis" and copy_element.options.get("style", "") != "invis":
+    if (
+        graph_element.options["style"] == "invis"
+        and copy_element.options.get("style", "") != "invis"
+    ):
         graph_element.options["style"] = copy_element.options.get("style", "")
         dot.to_dot(graph, path)

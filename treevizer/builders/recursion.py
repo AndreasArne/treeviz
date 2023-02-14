@@ -1,4 +1,3 @@
-
 """
 Contain class for visualizing recursive function calls.
 """
@@ -7,10 +6,12 @@ from collections import OrderedDict
 from treevizer.builders.edge import Edge
 from treevizer.builders.vertex import Vertex
 
-class Recursion():
+
+class Recursion:
     """
     Class for visualizing recursive function calls.
     """
+
     _graph_type = "digraph"
 
     def __init__(self, fn):
@@ -21,16 +22,12 @@ class Recursion():
         self._stack = []
         self._fn = fn
 
-
-
     @classmethod
     def graph_type(cls):
         """
         return private variable
         """
         return cls._graph_type
-
-
 
     def _create_fn_call_str(self, args, kwargs):
         """
@@ -41,11 +38,11 @@ class Recursion():
         if args:
             arg_kwargs_str_list.extend([repr(arg) for arg in args])
         if kwargs:
-            arg_kwargs_str_list.extend([f"{str(k)}={repr(v)}" for k, v in kwargs.items()])
+            arg_kwargs_str_list.extend(
+                [f"{str(k)}={repr(v)}" for k, v in kwargs.items()]
+            )
         arg_kwargs_str = ", ".join(arg_kwargs_str_list)
         return html.escape(f"{self._fn.__name__}({arg_kwargs_str})")
-
-
 
     def __call__(self, *args, **kwargs):
         """
@@ -53,23 +50,23 @@ class Recursion():
         """
         label_table = (
             '<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">'
-            '<TR><TD>{call}</TD></TR>'
-            '<HR/>'
-            '<TR><TD>{ret}</TD></TR>'
-            '</TABLE>'
+            "<TR><TD>{call}</TD></TR>"
+            "<HR/>"
+            "<TR><TD>{ret}</TD></TR>"
+            "</TABLE>"
         )
         # create vertex
-        label_table = label_table.replace("{call}", self._create_fn_call_str(args, kwargs))
+        label_table = label_table.replace(
+            "{call}", self._create_fn_call_str(args, kwargs)
+        )
         vertex = Vertex(self._call_counter, html_label=label_table)
         self.vertexes[vertex.id] = vertex
         # create call edge
         if self._call_counter > 0:
             self._edge_counter += 1
-            self.edges.append(Edge(
-                self._stack[-1][1],
-                vertex.id,
-                label=f"#{self._edge_counter}"
-            ))
+            self.edges.append(
+                Edge(self._stack[-1][1], vertex.id, label=f"#{self._edge_counter}")
+            )
 
         # add current NR to stack
         self._stack.append((self._call_counter, vertex.id))
@@ -88,10 +85,8 @@ class Recursion():
         # create return edge
         if call_nr > 0:
             self._edge_counter += 1
-            self.edges.append(Edge(
-                vertex.id,
-                self._stack[-1][1],
-                label=f"#{self._edge_counter}"
-            ))
+            self.edges.append(
+                Edge(vertex.id, self._stack[-1][1], label=f"#{self._edge_counter}")
+            )
 
         return result
