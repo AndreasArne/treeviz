@@ -8,16 +8,28 @@ class Vertex:
     """
     Vertex class
     """
+    duplicates = {}
 
-    def __init__(self, name, **kwargs):
+    def __init__(self, name, duplicate=False, **kwargs):
         self.name = name
         self.options = kwargs
-        self._id = id(name)
+        if duplicate:
+            self.duplicates[name] = self.duplicates.get(name, 0) + 1
+        self.duplicate = self.duplicates.get(name, 0)
+        self._id = id(self.get_unique_name())
+
+    def get_unique_name(self):
+        """
+        include duplicate number in name
+        """
+        if self.duplicate:
+            return f"{self.name}_dup{self.duplicate}"
+        return self.name
 
     @property
     def id(self):
         """
-        return private attrbute
+        return private attribute
         """
         return self._id
 

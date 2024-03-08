@@ -6,6 +6,7 @@ from unittest import mock
 from tests.fixtures import tree_utils as utils
 #pylint: disable=no-name-in-module,import-error, protected-access, attribute-defined-outside-init
 from treevizer.builders.base_graph import Graph
+from treevizer.builders.vertex import Vertex
 from tests.fixtures.ll_node import Node
 
 
@@ -124,11 +125,30 @@ class TestGraphBuilder(unittest.TestCase):
 
     def test_add_vertex_already_exist(self):
         """
-        Testa that error is raised when a Vertex already exist.
+        Testa that add_vertexes duplicates to graph with unique name.
         """
-        self.g.vertexes[1] = Node(1)
-        with self.assertRaises(KeyError):
-            self.g._add_vertex(1)
+        from tests.fixtures.bst import BinarySearchTree as Bst
+
+        # root = Node(1, "1")
+        # dup = Node(1, "1")
+        # root.right = Node(2, "2", root)
+        bst = Bst()
+        bst.insert(1, "1")
+        bst.insert(2, "2")
+        import treevizer
+        treevizer.to_png(bst.root, "bbt")
+
+        self.g._add_vertex(1)
+        self.g._add_vertex(1)
+        self.g._add_vertex(1)
+        self.assertIn(1, self.g.vertexes)
+        self.assertIn("1_dup1", self.g.vertexes)
+        self.assertIn("1_dup2", self.g.vertexes)
+        self.assertEqual(self.g.vertexes["1_dup1"].options["color"], "red")
+        self.assertEqual(self.g.vertexes["1_dup2"].options["color"], "red")
+        self.assertNotEqual(self.g.vertexes["1_dup1"].id, self.g.vertexes[1].id)
+        self.assertNotEqual(self.g.vertexes["1_dup2"].id, self.g.vertexes[1].id)
+        self.assertEqual(Vertex.duplicates, {1: 2})
 
 
 
