@@ -14,6 +14,9 @@ Available types:
 - `Security` in case of vulnerabilities.
 
 ## [Unreleased]
+
+
+## [0.2.4] - 2024-03-09
 ### Fixed
 - Trie builder does not crash if a Node use a list for children and it contain None values.
 

@@ -19,7 +19,7 @@ from treevizer.main import (
 )
 
 
-__version__ = "0.2.3"
+__version__ = "0.2.4"
 
 # what is __all__ https://stackoverflow.com/a/35710527
 __all__ = [
