@@ -32,18 +32,9 @@ class Graph:
         Take all arguments and add as options to vertex
         """
         if name in self.vertexes:
-            print((
-                f"Graph already contain a vertex with key {repr(name)}. "
-                f"Will add anyway to show structure. The error node will have the color red."
-            ))
+            raise KeyError(f"Graph already contain vertex {name}.")
 
-            v = Vertex(name, True, color="red", **kwargs)
-            self.vertexes[v.get_unique_name()] = v
-            return v.get_unique_name()
-        else:
-            self.vertexes[name] = Vertex(name, **kwargs)
-            return self.vertexes[name].get_unique_name()
-            
+        self.vertexes[name] = Vertex(name, **kwargs)
 
     def _add_node_to_graph(self, node):
         """
@@ -67,7 +58,7 @@ class Graph:
                     f"Something is wrong. Can't add an edge between nodes"
                     f"'{src}' and '{dest}'. Will add anyway to show structure."
                     f"'{dest}' probably doesn't exist in tree but '"
-                    f"{src}' is referencing it. The error node will have the color red"
+                    f"{src}' is referencing it. The error node will have color red"
                 )
             )
             self._add_vertex(
