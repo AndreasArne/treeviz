@@ -61,5 +61,6 @@ class Trie(Graph):
         Iter over children and add to graph.
         """
         for child in children:
-            self._add_node_to_graph(child, word)
-            self._add_edge(word, word + child.value)
+            if child is not None:
+                self._add_node_to_graph(child, word)
+                self._add_edge(word, word + child.value)

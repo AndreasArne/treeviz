@@ -10,6 +10,46 @@ from treevizer.builders.trie import Trie
 class TestTrieBuilder(unittest.TestCase):
     """Submodule for unittests, derives from unittest.TestCase"""
 
+    def test_add_node_children_list_none(self):
+        """
+        Test Nodes where children is a list full of None values.
+        It should ignore None values and not crash.
+        """
+        class Node:
+            def __init__(self, value):
+                self.value = value
+                self.children = [None] * 2
+                self.stop = False
+        n = Node("a")
+        t = Trie(n)
+
+        self.assertIn("a", t.vertexes)
+        self.assertEqual(len(t.vertexes), 1)
+        self.assertEqual(len(t.edges), 0)
+
+
+    def test_add_node_children_list_none_some_nodes(self):
+        """
+        Test Nodes where children is a list with of None values and Node.
+        It should ignore None values, add Node and not crash.
+        """
+        class Node:
+            def __init__(self, value):
+                self.value = value
+                self.children = [None] * 2
+                self.stop = False
+        n = Node("a")
+        n2 = Node("b")
+        n.children.append(n2)
+        t = Trie(n)
+
+        self.assertIn("a", t.vertexes)
+        self.assertIn("ab", t.vertexes)
+        self.assertEqual(len(t.vertexes), 2)
+        self.assertEqual(len(t.edges), 1)
+
+
+
     def test_add_node_stop(self):
         """
         Test that special vertex is created for stop node.
