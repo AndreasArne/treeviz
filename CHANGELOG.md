@@ -16,6 +16,10 @@ Available types:
 ## [Unreleased]
 
 
+## [0.2.5] - 2025-02-24
+### Fixed
+- Bumped pillow version to 10.4 to support py3.13
+
 ## [0.2.4] - 2024-03-09
 ### Fixed
 - Trie builder does not crash if a Node use a list for children and it contain None values.

@@ -18,7 +18,7 @@ setuptools.setup(
         "tests"
     ]),
     install_requires=[
-        'Pillow~=9.4;sys_platform!="cygwin"', # https://www.python.org/dev/peps/pep-0508/
+        'Pillow~=10.4;sys_platform!="cygwin"', # https://www.python.org/dev/peps/pep-0508/
     ],
     python_requires='>=3.7',
     classifiers=[
